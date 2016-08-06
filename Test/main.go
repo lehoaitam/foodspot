@@ -106,15 +106,17 @@ func main() {
 	//// Drop its first two values.
 	//s = s[2:]
 	//printSlice(s)
+	//
+	//result := make([][]uint8, 3)
+	//for i := 0; i < 3; i++ {
+	//	result[i] = make([]uint8,8)
+	//	for j := 0; j < 8; j++ {
+	//		result[i][j] = uint8(i * j)
+	//	}
+	//}
+	//fmt.Println("2d: ", result)
 
-	result := make([][]uint8, 3)
-	for i := 0; i < 3; i++ {
-		result[i] = make([]uint8,8)
-		for j := 0; j < 8; j++ {
-			result[i][j] = uint8(i * j)
-		}
-	}
-	fmt.Println("2d: ", result)
+	fmt.Println("finished configure")
 
 
 
