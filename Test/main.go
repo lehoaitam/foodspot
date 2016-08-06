@@ -84,11 +84,11 @@ func main() {
 	//	fmt.Printf("%v - %v\n", key, value)
 	//}
 	//
-	//err := run()
-	//if err != nil{
-	//	fmt.Println(err)
-	//}
-	//fmt.Println("test error")
+	err := run()
+	if err != nil{
+		fmt.Println(err)
+	}
+	fmt.Println("test error")
 	//
 	//fmt.Println(Sqrt(2))
 	//fmt.Println(Sqrt(-2))
@@ -115,8 +115,9 @@ func main() {
 	//	}
 	//}
 	//fmt.Println("2d: ", result)
-
-	fmt.Println("finished configure")
+	//
+	//fmt.Println("finished configure")
+	//fmt.Println("")
 
 
 
