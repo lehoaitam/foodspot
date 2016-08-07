@@ -21,6 +21,7 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	fmt.Println("Start webserver")
 	http.HandleFunc("/", sayhelloName) // set router
 	err := http.ListenAndServe(":9090", nil) // set listen port
 	if err != nil {
