@@ -17,7 +17,7 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("key:", k)
 		fmt.Println("val:", strings.Join(v, ""))
 	}
-	fmt.Fprintf(w, "Hello golang webserver!") // send data to client side
+	fmt.Fprintf(w, "Hello golang webserver! We should do stuff on MVC framework") // send data to client side
 }
 
 func main() {
