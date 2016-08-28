@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"goorder/controllers"
+	"foodspot/controllers"
 	"github.com/astaxie/beego"
 )
 
