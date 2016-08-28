@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "goorder/source/goorder/routers"
+	_ "goorder/routers"
 	"github.com/astaxie/beego"
 )
 
