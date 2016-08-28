@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "ufood/routers"
+	_ "goorder/source/goorder/routers"
 	"github.com/astaxie/beego"
 )
 
