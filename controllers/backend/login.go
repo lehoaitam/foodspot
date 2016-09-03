@@ -1,15 +1,15 @@
-package controllers
+package backend_controllers
 
 import (
 	"github.com/astaxie/beego"
 )
 
-type MainController struct {
+type LoginController struct {
 	beego.Controller
 }
 
-func (c *MainController) Get() {
+func (c *LoginController) Get() {
 	c.Data["Website"] = "beego.me"
 	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "index.html"
+	c.TplName = "backend/login.html"
 }
