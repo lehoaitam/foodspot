@@ -8,7 +8,7 @@ var langTypes []string // Languages that are supported.
 // baseController represents base router for all other app routers.
 // It implemented some methods for the same implementation;
 // thus, it will be embedded into other routers.
-type BaseController struct {
+type BaseFrontEndController struct {
 	beego.Controller // Embed struct that has stub implementation of the                     interface.
 	i18n.Locale      // For i18n usage when process data and render template.
 }
@@ -31,7 +31,7 @@ func init() {
 
 // Prepare implemented Prepare() method for baseController.
 // It's used for language option check and setting.
-func (this *BaseController) Prepare() {
+func (this *BaseFrontEndController) Prepare() {
 	// Reset language option.
 	this.Lang = "" // This field is from i18n.Locale.
 	beego.Trace("running prepare")
@@ -52,4 +52,5 @@ func (this *BaseController) Prepare() {
 
 	// Set template level language option.
 	this.Data["Lang"] = this.Lang
+
 }

@@ -1,15 +1,22 @@
 package backend_controllers
 
 import (
-	"github.com/astaxie/beego"
+	bc "foodspot/controllers"
 )
 
 type CategoriesController struct {
-	beego.Controller
+	bc.BaseBackEndController
 }
 
+func (c *CategoriesController) NestPrepare() {
+	//TODO: Debug only
+	/*if !c.IsLogin {
+		c.Ctx.Redirect(302, c.LoginPath())
+		return
+	}*/
+}
+
+
 func (c *CategoriesController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "backend/categories.html"
+	c.ActiveContent("backend/categories.html")
 }

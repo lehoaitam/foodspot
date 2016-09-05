@@ -5,7 +5,7 @@ import (
 )
 
 type TopController struct {
-	bc.BaseController
+	bc.BaseFrontEndController
 }
 
 func (c *TopController) Get() {
