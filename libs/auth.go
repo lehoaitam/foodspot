@@ -11,8 +11,11 @@ import (
  Get authenticated user and update logintime
 */
 func Authenticate(email string, password string) (user *models.User, err error) {
-	msg := "invalid email or password."
+	msg := "Invalid email or password."
 	user = &models.User{Email: email}
+
+	pass := ""
+	pass= helpers.EncryptPassword(password)
 
 	if err := user.Read("Email"); err != nil {
 		if err.Error() == "<QuerySeter> no row found" {
@@ -22,7 +25,7 @@ func Authenticate(email string, password string) (user *models.User, err error) 
 	} else if user.Id < 1 {
 		// No user
 		return user, errors.New(msg)
-	} else if user.Password != helpers.EncryptPassword(password) {
+	} else if user.Password != pass[0:len(user.Password)] {
 		// No matched password
 		return user, errors.New(msg)
 	} else {

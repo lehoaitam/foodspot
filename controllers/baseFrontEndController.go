@@ -3,6 +3,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 	"strings"
+	"github.com/astaxie/beego/context"
 )
 var langTypes []string // Languages that are supported.
 // baseController represents base router for all other app routers.
@@ -29,28 +30,29 @@ func init() {
 	}
 }
 
-// Prepare implemented Prepare() method for baseController.
-// It's used for language option check and setting.
-func (this *BaseFrontEndController) Prepare() {
+func getLang(ctx *context.Context) string {
 	// Reset language option.
-	this.Lang = "" // This field is from i18n.Locale.
-	beego.Trace("running prepare")
-	// 1. Get language information from 'Accept-Language'.
-	al := this.Ctx.Request.Header.Get("Accept-Language")
+	lang := ""
+	//beego.Trace("running prepare")
+	// Get language information from 'Accept-Language'.
+	al := ctx.Request.Header.Get("Accept-Language")
 	if len(al) > 4 {
 		al = al[:5] // Only compare first 5 letters.
 		if i18n.IsExist(al) {
-			this.Lang = al
+			lang = al
 		}
 	}
 
-	beego.Trace("Accept-Language is " + al)
-	// 2. Default language is English.
-	if len(this.Lang) == 0 {
-		this.Lang = "en-US"
+	//beego.Trace("Accept-Language is " + al)
+	if len(lang) == 0 {
+		lang = "en-US"
 	}
 
-	// Set template level language option.
-	this.Data["Lang"] = this.Lang
+	return lang
+}
 
+// Prepare implemented Prepare() method for baseController.
+// It's used for language option check and setting.
+func (this *BaseFrontEndController) Prepare() {
+	this.Data["Lang"] = getLang(this.Ctx)
 }

@@ -14,8 +14,30 @@ type LoginController struct {
 }
 
 func (c *LoginController) Login() {
-	c.DelLogin()
 	c.ActiveContent("backend/login.html")
+
+	if c.Ctx.Input.IsPost() {
+		flash := beego.NewFlash()
+		email := c.GetString("email")
+		password := c.GetString("password")
+
+		user, err := libs.Authenticate(email, password)
+		if err != nil || user.Id < 1 {
+			flash.Warning(err.Error())
+			flash.Store(&c.Controller)
+
+			return
+		}
+
+		flash.Success("Success logged in")
+		flash.Store(&c.Controller)
+
+		c.SetLogin(user)
+
+		c.Redirect(c.URLFor("CategoriesController.Get"), 303)
+	}  else {
+		c.DelLogin()
+	}
 }
 
 func (c *LoginController) Logout() {

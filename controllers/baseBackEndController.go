@@ -20,6 +20,10 @@ type NestFinisher interface {
 	NestFinish()
 }
 
+func (c *BaseBackEndController) NestPrepare() {
+
+}
+
 func (c *BaseBackEndController) LoginPath() string {
 	return c.URLFor("LoginController.Login")
 }
@@ -46,8 +50,6 @@ func (c *BaseBackEndController) SetParams() {
 }
 
 func (c *BaseBackEndController) Prepare() {
-	c.SetParams()
-
 	c.IsLogin = c.GetSession("userinfo") != nil
 	if c.IsLogin {
 		c.Userinfo = c.GetLogin()
@@ -57,6 +59,8 @@ func (c *BaseBackEndController) Prepare() {
 	c.Data["Userinfo"] = c.Userinfo
 	c.Data["HeadStyles"] = []string{}
 	c.Data["HeadScripts"] = []string{}
+
+	c.Data["Lang"] = getLang(c.Ctx);
 
 	if app, ok := c.AppController.(NestPreparer); ok {
 		app.NestPrepare()
