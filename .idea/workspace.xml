@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4ca2e1c-7f39-4746-b686-d9e276559b4d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/user.go" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ufood.iws" />
@@ -1041,7 +1040,7 @@
       <workItem from="1473577415742" duration="21000" />
       <workItem from="1473577789679" duration="11552000" />
       <workItem from="1474203087498" duration="185000" />
-      <workItem from="1474203356916" duration="4947000" />
+      <workItem from="1474203356916" duration="4985000" />
     </task>
     <task id="LOCAL-00001" summary="set up go's ufood project">
       <created>1470511528371</created>
@@ -1141,11 +1140,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474216724057</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="delete old user model">
+      <created>1474216857466</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1474216857466</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50687000" />
+    <option name="totallyTimeSpent" value="50725000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1217,7 +1223,8 @@
     <MESSAGE value="restructure project&#10;add i18n module" />
     <MESSAGE value="restructure project&#10;add simple layout template&#10;login form: working" />
     <MESSAGE value="add models: shops, categories" />
-    <option name="LAST_COMMIT_MESSAGE" value="add models: shops, categories" />
+    <MESSAGE value="delete old user model" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete old user model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
