@@ -16,6 +16,8 @@ func init() {
 	orm.SetMaxIdleConns("default", 30)
 	orm.DefaultTimeLoc = time.UTC
 
+	//orm.RegisterModelWithPrefix(beego.AppConfig.String("dbprefix"), new(models.Users), new(models.Shops))
+
 	err := orm.RunSyncdb("default", false, true)
 	if err != nil {
 		fmt.Println(err)

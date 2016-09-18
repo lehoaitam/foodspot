@@ -10,9 +10,9 @@ import (
 /*
  Get authenticated user and update logintime
 */
-func Authenticate(email string, password string) (user *models.User, err error) {
+func Authenticate(email string, password string) (user *models.Users, err error) {
 	msg := "Invalid email or password."
-	user = &models.User{Email: email}
+	user = &models.Users{Email: email}
 
 	pass := ""
 	pass= helpers.EncryptPassword(password)

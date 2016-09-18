@@ -8,7 +8,7 @@ import (
 type BaseBackEndController struct {
 	BaseFrontEndController
 
-	Userinfo *models.User
+	Userinfo *models.Users
 	IsLogin bool
 }
 
@@ -28,14 +28,14 @@ func (c *BaseBackEndController) LoginPath() string {
 	return c.URLFor("LoginController.Login")
 }
 
-func (c *BaseBackEndController) GetLogin() *models.User {
-	u := &models.User{Id: c.GetSession("userinfo").(int64)}
+func (c *BaseBackEndController) GetLogin() *models.Users {
+	u := &models.Users{Id: c.GetSession("userinfo").(int64)}
 	u.Read()
 	return u
 }
 
-func (c *BaseBackEndController) SetLogin(user *models.User) {
-	c.SetSession("userinfo", user.Id)
+func (c *BaseBackEndController) SetLogin(users *models.Users) {
+	c.SetSession("userinfo", users.Id)
 }
 
 func (c *BaseBackEndController) DelLogin() {

@@ -21,8 +21,8 @@ func (c *LoginController) Login() {
 		email := c.GetString("email")
 		password := c.GetString("password")
 
-		user, err := libs.Authenticate(email, password)
-		if err != nil || user.Id < 1 {
+		users, err := libs.Authenticate(email, password)
+		if err != nil || users.Id < 1 {
 			flash.Warning(err.Error())
 			flash.Store(&c.Controller)
 
@@ -32,7 +32,7 @@ func (c *LoginController) Login() {
 		flash.Success("Success logged in")
 		flash.Store(&c.Controller)
 
-		c.SetLogin(user)
+		c.SetLogin(users)
 
 		c.Redirect(c.URLFor("CategoriesController.Get"), 303)
 	}  else {
@@ -59,7 +59,7 @@ func (c *LoginController) Signup() {
 	var err error
 	flash := beego.NewFlash()
 
-	u := &models.User{}
+	u := &models.Users{}
 	if err = c.ParseForm(u); err != nil {
 		flash.Error("Signup invalid!")
 		flash.Store(&c.Controller)

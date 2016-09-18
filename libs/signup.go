@@ -6,13 +6,13 @@ import (
 	"foodspot/helpers"
 )
 
-func Signup(u *models.User) (int64, error) {
+func Signup(u *models.Users) (int64, error) {
 	var (
 		err error
 		msg string
 	)
 
-	if models.Users().Filter("email", u.Email).Exist() {
+	if models.GetUsers().Filter("email", u.Email).Exist() {
 		msg = "was already registered."
 		return 0, errors.New(msg)
 	}
