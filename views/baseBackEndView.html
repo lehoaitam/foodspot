@@ -18,21 +18,10 @@
     <![endif]-->
 
     <script src="/static/node_modules/core-js/client/shim.min.js"></script>
-
     <script src="/static/node_modules/zone.js/dist/zone.js"></script>
     <script src="/static/node_modules/reflect-metadata/Reflect.js"></script>
-
-    <script src="/static/node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="/static/node_modules/@angular/core/bundles/core.umd.js"></script>
-    <script src="/static/node_modules/@angular/common/bundles/common.umd.js"></script>
-    <script src="/static/node_modules/@angular/compiler/bundles/compiler.umd.js"></script>
-    <script src="/static/node_modules/@angular/platform-browser/bundles/platform-browser.umd.js"></script>
-    <script src="/static/node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
-
-    <!-- 2. Load our 'modules' -->
-    <script src='/static/js/app.component.js'></script>
-    <script src='/static/js/app.module.js'></script>
-    <script src='/static/js/main.js'></script>
+    <script src="/static/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/static/systemjs.config.js"></script>
 
     {{range .HeadStyles}}
     <link rel="stylesheet" href="{{.}}">
