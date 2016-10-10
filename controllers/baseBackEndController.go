@@ -70,7 +70,11 @@ func (c *BaseBackEndController) Prepare() {
 func (c *BaseBackEndController) ActiveContent(view string) {
 	c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 
-	c.Layout = "baseBackEndView.html"
+	if c.IsLogin {
+		c.Layout = "baseBackEndView.html"
+	} else {
+		c.Layout = "loginBackEndView.html"
+	}
 	c.LayoutSections = make(map[string]string)
 	c.TplName = view
 }

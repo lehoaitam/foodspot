@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <title>{{.page_title}}</title>
+    <title>{{i18n .Lang .page_title}} - FootSpot</title>
 
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -23,19 +23,60 @@
     <script src="/static/node_modules/systemjs/dist/system.src.js"></script>
     <script src="/static/systemjs.config.js"></script>
 
+    <link rel="stylesheet" href="/static/css/style.backend.css">
     {{range .HeadStyles}}
     <link rel="stylesheet" href="{{.}}">
     {{end}}
 </head>
 <body id="home">
 
-<header>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span>FootSpot</span>Admin</a>
+            <ul class="user-menu">
+                <li class="dropdown pull-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><a href="/backoffice/settings"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
+                        <li><a href="#"><a href="/backoffice/settings"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-</header>
+    </div><!-- /.container-fluid -->
+</nav>
 
-<div id="wrap">
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <!--form role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+    </form-->
+    <ul class="nav menu">
+        <ul class="nav menu">
+            <li {{if compare .page_title "Home"}} class="active" {{end}}><a href="/backoffice"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Dashboard</a></li>
+            <li {{if compare .page_title "Shops"}} class="active" {{end}}><a href="/backoffice/shops"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Shops</a></li>
+            <li {{if compare .page_title "Categories"}} class="active" {{end}}><a href="/backoffice/categories"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>Categories</a></li>
+            <li {{if compare .page_title "Foods"}} class="active" {{end}}><a href="/backoffice/foods"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Foods</a></li>
+            <li {{if compare .page_title "Menus"}} class="active" {{end}}><a href="/backoffice/menu"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Menus</a></li>
+            <li role="presentation" class="divider"></li>
+            <li {{if compare .page_title "Settings"}} class="active" {{end}}><a href="/backoffice/settings"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>Settings</a></li>
+        </ul>
+    </ul>
+
+</div><!--/.sidebar-->
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     {{.LayoutContent}}
-</div>
+</div>	<!--/.main-->
 
 <footer>
 

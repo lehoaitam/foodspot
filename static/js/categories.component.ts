@@ -4,6 +4,6 @@ import { Component,enableProdMode } from '@angular/core';
 
 @Component({
   selector: 'categories-app',
-  template: '<h1>Categories</h1>'
+  template: '<div class="col-lg-12"><h1>Categories</h1></div>'
 })
 export class AppComponent { }

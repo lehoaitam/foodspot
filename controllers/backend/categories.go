@@ -9,10 +9,11 @@ type CategoriesController struct {
 }
 
 func (c *CategoriesController) NestPrepare() {
-	/*if !c.IsLogin {
+	if !c.IsLogin {
 		c.Ctx.Redirect(302, c.LoginPath())
 		return
-	}*/
+	}
+	c.Data["page_title"] = "Categories"
 }
 
 

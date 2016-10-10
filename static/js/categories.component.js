@@ -13,7 +13,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'categories-app',
-            template: '<h1>Categories</h1>'
+            template: '<div class="col-lg-12"><h1>Categories</h1></div>'
         })
     ], AppComponent);
     return AppComponent;
