@@ -15,6 +15,7 @@ func init() {
 	orm.RegisterDataBase("default", "mysql", beego.AppConfig.String("mysqluser") + ":" + beego.AppConfig.String("mysqluser") + "@/" + beego.AppConfig.String("mysqldb") + "?charset=utf8")
 	orm.SetMaxIdleConns("default", 30)
 	orm.DefaultTimeLoc = time.UTC
+	orm.Debug = true
 
 	//orm.RegisterModelWithPrefix(beego.AppConfig.String("dbprefix"), new(models.Users), new(models.Shops))
 

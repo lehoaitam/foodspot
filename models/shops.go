@@ -22,6 +22,12 @@ func (m *Shops) Valid(v *validation.Validation) {
 
 }
 
+func (u *Shops) TableUnique() [][]string {
+	return [][]string{
+		[]string{"Name", "Users"},
+	}
+}
+
 func (m *Shops) Insert() error {
 	if _, err := orm.NewOrm().Insert(m); err != nil {
 		return err

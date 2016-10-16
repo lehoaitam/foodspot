@@ -13,6 +13,7 @@ func init() {
 	beego.Router("/logout", &backend_controllers.LoginController{}, "get:Logout")
 	beego.Router("/signup", &backend_controllers.LoginController{}, "get,post:Signup")
 	beego.Router("/backoffice/categories", &backend_controllers.CategoriesController{})
+	beego.Router("/backoffice/categories-data", &backend_controllers.CategoriesController{}, "get:GetCategories;put:AddCategory;post:EditCategory;delete:DeteteCAtegory")
 
 	// demo frontend template
 	beego.Router("/index", &frontend_controllers.TopController{})

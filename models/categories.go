@@ -11,7 +11,7 @@ import (
 type Categories struct {
 	Id          int64
 	Name        string    	`orm:"size(128)" form:"Name" valid:"Required"`
-	Shops      	*Shops    	`orm:"rel(fk)"`
+	Shops    	*Shops    	`orm:"rel(fk)"`
 	ActiveFlg     byte		`orm:"default(1)"`
 	DeleteFlg     byte		`orm:"default(0)"`
 	Created     time.Time 	`orm:"auto_now_add;type(datetime)"`
@@ -20,6 +20,12 @@ type Categories struct {
 
 func (u *Categories) Valid(v *validation.Validation) {
 
+}
+
+func (u *Categories) TableUnique() [][]string {
+	return [][]string{
+		[]string{"Name", "Shops"},
+	}
 }
 
 func (m *Categories) Insert() error {

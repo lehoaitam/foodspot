@@ -1,0 +1,85 @@
+<section>
+    <header class="header">
+        <h1>Categories</h1>
+        <input class="new-category" placeholder=" Add a new category" autofocus="" [(ngModel)]="newCategory.Name" (keyup.enter)="addCategory()">
+    </header>
+</section>
+
+<div class="panel-body">
+    <div class="bootstrap-table">
+        <div class="fixed-table-toolbar">
+            <div class="columns btn-group pull-right">
+                <button class="btn btn-default" type="button" name="refresh" title="Refresh"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button>
+                <button class="btn btn-default" type="button" name="toggle" title="Toggle"><i class="glyphicon glyphicon glyphicon-list-alt icon-list-alt"></i></button>
+                <div class="keep-open btn-group" title="Columns">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-th icon-th"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><label><input data-field="id" value="1" checked="checked" type="checkbox"> Item ID</label></li>
+                        <li><label><input data-field="name" value="2" checked="checked" type="checkbox"> Item Name</label></li>
+                        <li><label><input data-field="price" value="3" checked="checked" type="checkbox"> Item Price</label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pull-right search">
+                <input class="form-control" placeholder="Search" type="text">
+            </div>
+        </div>
+        <div class="fixed-table-container" style="padding-bottom: 0px;">
+            <div class="fixed-table-header" style="display: block;">
+                <table>
+
+                </table>
+            </div>
+            <div class="fixed-table-body">
+                <div class="fixed-table-loading" style="top: 37px; display: none;">Loading, please wait…</div>
+                <table data-toggle="table" data-url="tables/data1.json" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table table-hover" style="margin-top: 0px;">
+                    <thead style="display: table-header-group;">
+                        <tr>
+                            <th class="bs-checkbox " style="width: 36px; ">
+                                <div class="th-inner ">
+                                    <input name="btSelectAll" type="checkbox">
+                                </div>
+                                <div class="fht-cell">
+                                </div>
+                            </th>
+                            <th style="">
+                                <div class="th-inner sortable">Id</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="">
+                                <div class="th-inner sortable">Name<span class="order"><span class="caret" style="margin: 10px 5px;"></span></span></div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="">
+                                <div class="th-inner sortable">Shop</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="categories.length > 0">
+                        <tr *ngFor="let category of categories" attr.data-index="{{category.Id}}">
+                            <td class="bs-checkbox">
+                                <input attr.data-index="{{category.Id}}" name="toolbar1" type="checkbox">
+                            </td>
+                            <td>{{category.Id}}</td>
+                            <td>{{category.Name}}</td>
+                            <td>{{category.ShopName}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="categories.length == 0">
+                        <tr>
+                            <td colspan="4" class="center-align">No data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="footer" *ngIf="categories.length > 0">
+        <span class="categories-count"><strong>{{categories.length}}</strong> {{categories.length == 1 ? 'item' : 'items'}} left</span>
+    </div>
+</div>
