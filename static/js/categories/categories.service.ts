@@ -2,7 +2,7 @@ import '../global/rxjs-operators.js';
 
 import {Injectable} from '@angular/core';
 import {Category} from './category';
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -11,19 +11,20 @@ export class CategoriesService {
     lastId: number = 0;
     categories: Category[] = [];
 
-    private url = '/backoffice/categories-data';
+    private categoriesUrl = '/backoffice/categories-data';
 
     constructor(private http: Http) {
 
     }
 
     // Simulate POST /categories
-    addCategory(category: Category): CategoriesService {
-        if (!category.Id) {
-            category.Id = ++this.lastId;
-        }
-        this.categories.push(category);
-        return this;
+    addCategory(category: Category): Observable<string> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        let body = JSON.stringify(category);
+        return this.http.put(this.categoriesUrl, body, options)
+            .map(this.addCategoriesData)
+            .catch(this.handleError);
     }
 
     // Simulate DELETE /categories/:id
@@ -44,8 +45,8 @@ export class CategoriesService {
     }
 
     getAllCategories(): Observable<Category[]> {
-        return this.http.get(this.url)
-            .map(this.extractData)
+        return this.http.get(this.categoriesUrl)
+            .map(this.extractCategoriesData)
             .catch(this.handleError);
     }
 
@@ -56,7 +57,12 @@ export class CategoriesService {
             .pop();
     }
 
-    private extractData(res: Response) {
+    private addCategoriesData(res: Response) {
+        let body = res.json();
+        return body;
+    }
+
+    private extractCategoriesData(res: Response) {
         let body = res.json();
         let result = <Category[]>body || { };
         return result;

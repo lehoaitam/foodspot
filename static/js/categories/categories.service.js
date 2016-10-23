@@ -17,15 +17,16 @@ var CategoriesService = (function () {
         this.http = http;
         this.lastId = 0;
         this.categories = [];
-        this.url = '/backoffice/categories-data';
+        this.categoriesUrl = '/backoffice/categories-data';
     }
     // Simulate POST /categories
     CategoriesService.prototype.addCategory = function (category) {
-        if (!category.Id) {
-            category.Id = ++this.lastId;
-        }
-        this.categories.push(category);
-        return this;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var body = JSON.stringify(category);
+        return this.http.put(this.categoriesUrl, body, options)
+            .map(this.addCategoriesData)
+            .catch(this.handleError);
     };
     // Simulate DELETE /categories/:id
     CategoriesService.prototype.deleteCategoryById = function (id) {
@@ -44,8 +45,8 @@ var CategoriesService = (function () {
         return category;
     };
     CategoriesService.prototype.getAllCategories = function () {
-        return this.http.get(this.url)
-            .map(this.extractData)
+        return this.http.get(this.categoriesUrl)
+            .map(this.extractCategoriesData)
             .catch(this.handleError);
     };
     // Simulate GET /categories/:id
@@ -54,7 +55,11 @@ var CategoriesService = (function () {
             .filter(function (category) { return category.Id === id; })
             .pop();
     };
-    CategoriesService.prototype.extractData = function (res) {
+    CategoriesService.prototype.addCategoriesData = function (res) {
+        var body = res.json();
+        return body;
+    };
+    CategoriesService.prototype.extractCategoriesData = function (res) {
         var body = res.json();
         var result = body || {};
         return result;

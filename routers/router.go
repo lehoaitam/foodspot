@@ -12,8 +12,10 @@ func init() {
 	beego.Router("/login", &backend_controllers.LoginController{}, "get,post:Login")
 	beego.Router("/logout", &backend_controllers.LoginController{}, "get:Logout")
 	beego.Router("/signup", &backend_controllers.LoginController{}, "get,post:Signup")
+	beego.Router("/backoffice/shops", &backend_controllers.ShopsController{})
+	beego.Router("/backoffice/shops-data", &backend_controllers.ShopsController{}, "get:GetShops;put:AddShop;post:EditShop;delete:DeleteShop")
 	beego.Router("/backoffice/categories", &backend_controllers.CategoriesController{})
-	beego.Router("/backoffice/categories-data", &backend_controllers.CategoriesController{}, "get:GetCategories;put:AddCategory;post:EditCategory;delete:DeteteCAtegory")
+	beego.Router("/backoffice/categories-data", &backend_controllers.CategoriesController{}, "get:GetCategories;put:AddCategory;post:EditCategory;delete:DeleteCategory")
 
 	// demo frontend template
 	beego.Router("/index", &frontend_controllers.TopController{})
