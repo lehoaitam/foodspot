@@ -1,29 +1,4 @@
-<div class="col-lg-12" id="categoriesAdd" style="display: none">
-    <div class="panel panel-default">
-        <div class="panel-heading">Add new category</div>
-        <div class="alert bg-danger" role="alert" *ngIf="errorAddMessage.length > 0">
-            <svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"/></svg> {{errorAddMessage}} <a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-        </div>
-        <div class="panel-body">
-            <div class="col-lg-6 col-lg-offset-3 col-sm-12 col-sm-offset-0">
-                <div class="form-group">
-                    <label>Category name</label>
-                    <input type="text" class="form-control" required placeholder="Name" [(ngModel)]="newCategory.Name">
-                </div>
-                <div class="form-group">
-                    <label>Shop</label>
-                    <select class="form-control" [(ngModel)]="newCategory.ShopId" required>
-                        <option *ngFor="let shop of shops" value="{{shop.Id}}">{{shop.Name}}</option>
-                    </select>
-                </div>
-                <button type="button" class="btn btn-primary" (click)="addCategory()">Add</button>
-                <button type="button" #btBackToCategories class="btn btn-default" onclick="returnCategories()">Back</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="panel-body" id="categoriesList">
+<div class="panel-body" *ngIf="displayMode == 0">
     <div class="col-lg-12">
         <h1>Categories</h1>
     </div>
@@ -31,7 +6,8 @@
         <div class="fixed-table-toolbar">
             <div class="columns btn-group pull-right">
                 <button class="btn btn-default" type="button" name="refresh" title="Refresh" (click)="getCategories()"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button>
-                <button class="btn btn-default" type="button" name="add" title="Add new category" onclick="showAddCategory()"><i class="glyphicon glyphicon-plus"></i></button>
+                <button class="btn btn-default" type="button" name="add" title="Add new category" (click)="showAddCategory()"><i class="glyphicon glyphicon-plus"></i></button>
+                <button class="btn btn-default" type="button" name="delete" title="Delete" (click)="deleteCategories()"><i class="glyphicon glyphicon-trash"></i></button>
             </div>
             <div class="pull-right search">
                 <input class="form-control" placeholder="Search" type="text">
@@ -72,9 +48,9 @@
                     <tbody *ngIf="categories.length > 0">
                         <tr *ngFor="let category of categories" attr.data-index="{{category.Id}}">
                             <td class="bs-checkbox">
-                                <input attr.data-index="{{category.Id}}" name="toolbar1" type="checkbox">
+                                <input attr.data-index="{{category.Id}}" value="{{category.Id}}" [(ngModel)]="category.Selected" name="selectedRow[]" type="checkbox">
                             </td>
-                            <td>{{category.Id}}</td>
+                            <td><a href="javascript:void(0)" (click)="showUpdateCategory(category)">{{category.Id}}</a></td>
                             <td>{{category.Name}}</td>
                             <td>{{category.ShopName}}</td>
                         </tr>
@@ -91,5 +67,55 @@
     <div class="clearfix"></div>
     <div class="footer" *ngIf="categories.length > 0">
         <span class="categories-count"><strong>{{categories.length}}</strong> {{categories.length == 1 ? 'item' : 'items'}}</span>
+    </div>
+</div>
+
+<div class="col-lg-12" *ngIf="displayMode == 1">
+    <div class="panel panel-default">
+        <div class="panel-heading">Add new category</div>
+        <div class="alert bg-danger" role="alert" *ngIf="errorAddMessage.length > 0">
+            <svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"/></svg> {{errorAddMessage}} <a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-lg-offset-3 col-sm-12 col-sm-offset-0">
+                <div class="form-group">
+                    <label>Category name</label>
+                    <input type="text" class="form-control" required placeholder="Name" [(ngModel)]="newCategory.Name">
+                </div>
+                <div class="form-group">
+                    <label>Shop</label>
+                    <select class="form-control" [(ngModel)]="newCategory.ShopId" required>
+                        <option *ngFor="let shop of shops" value="{{shop.Id}}">{{shop.Name}}</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="addCategory()">Add</button>
+                <button type="button" #btBackToCategories class="btn btn-default" (click)="returnCategories()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12" *ngIf="displayMode == 2">
+    <div class="panel panel-default">
+        <div class="panel-heading">Update category</div>
+        <div class="alert bg-danger" role="alert" *ngIf="errorUpdateMessage.length > 0">
+            <svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"/></svg> {{errorUpdateMessage}} <a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-lg-offset-3 col-sm-12 col-sm-offset-0">
+                <div class="form-group">
+                    <label>Category name</label>
+                    <input type="text" class="form-control" required placeholder="Name" [(ngModel)]="editCategory.Name">
+                </div>
+                <div class="form-group">
+                    <label>Shop</label>
+                    <select class="form-control" [(ngModel)]="editCategory.ShopId" required>
+                        <option *ngFor="let shop of shops" [selected]="shop.Id == editCategory.ShopId" value="{{shop.Id}}">{{shop.Name}}</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="updateCategory()">Save</button>
+                <button type="button" #btBackToCategories class="btn btn-default" (click)="returnCategories()">Back</button>
+            </div>
+        </div>
     </div>
 </div>

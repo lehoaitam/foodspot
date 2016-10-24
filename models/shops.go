@@ -9,7 +9,7 @@ import (
 )
 
 type Shops struct {
-	Id            int64
+	Id            int
 	Name          string    `orm:"size(128)" form:"Name" valid:"Required"`
 	Users         *Users    `orm:"rel(fk)"`
 	ActiveFlg     byte		`orm:"default(1)"`

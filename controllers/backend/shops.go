@@ -20,10 +20,6 @@ func (c *ShopsController) NestPrepare() {
 		return
 	}
 	c.Data["page_title"] = "Shops"
-
-	c.Data["HeadScripts"] = []string{
-		"/static/js/shops/main.js",
-	}
 }
 
 
@@ -57,6 +53,6 @@ func (c *ShopsController) EditShop() {
 
 }
 
-func (c *ShopsController) DeleteShop() {
+func (c *ShopsController) DeleteShops() {
 
 }

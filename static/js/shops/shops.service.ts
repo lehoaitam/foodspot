@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ShopsService {
 
-    private shopsUrl = '/backoffice/shops-data';
+    private shopsUrl = '/backoffice/shops/data';
 
     constructor(private http: Http) {
 

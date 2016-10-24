@@ -17,45 +17,39 @@ var CategoriesService = (function () {
         this.http = http;
         this.lastId = 0;
         this.categories = [];
-        this.categoriesUrl = '/backoffice/categories-data';
+        this.categoriesUrl = '/backoffice/categories/data';
+        this.categoriesDeleteUrl = '/backoffice/categories/delete';
     }
-    // Simulate POST /categories
     CategoriesService.prototype.addCategory = function (category) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         var body = JSON.stringify(category);
         return this.http.put(this.categoriesUrl, body, options)
-            .map(this.addCategoriesData)
+            .map(this.updateCategoriesData)
             .catch(this.handleError);
     };
-    // Simulate DELETE /categories/:id
-    CategoriesService.prototype.deleteCategoryById = function (id) {
-        this.categories = this.categories
-            .filter(function (category) { return category.Id !== id; });
-        return this;
+    CategoriesService.prototype.updateCategory = function (category) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var body = JSON.stringify(category);
+        return this.http.post(this.categoriesUrl, body, options)
+            .map(this.updateCategoriesData)
+            .catch(this.handleError);
     };
-    // Simulate PUT /categories/:id
-    CategoriesService.prototype.updateCategoryById = function (id, values) {
-        if (values === void 0) { values = {}; }
-        var category = this.getCategoryById(id);
-        if (!category) {
-            return null;
-        }
-        Object.assign(category, values);
-        return category;
+    CategoriesService.prototype.deleteCategories = function (ids) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var body = JSON.stringify(ids);
+        return this.http.post(this.categoriesDeleteUrl, body, options)
+            .map(this.updateCategoriesData)
+            .catch(this.handleError);
     };
     CategoriesService.prototype.getAllCategories = function () {
         return this.http.get(this.categoriesUrl)
             .map(this.extractCategoriesData)
             .catch(this.handleError);
     };
-    // Simulate GET /categories/:id
-    CategoriesService.prototype.getCategoryById = function (id) {
-        return this.categories
-            .filter(function (category) { return category.Id === id; })
-            .pop();
-    };
-    CategoriesService.prototype.addCategoriesData = function (res) {
+    CategoriesService.prototype.updateCategoriesData = function (res) {
         var body = res.json();
         return body;
     };

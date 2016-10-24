@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var category_1 = require("./category");
 var shops_service_1 = require("../shops/shops.service");
 var categories_service_1 = require("./categories.service");
+/// <reference path="../../node_modules/jquery.d.ts" />
 //enableProdMode();
 var CategoriesComponent = (function () {
     function CategoriesComponent(categoriesService, shopsService, renderer) {
@@ -19,7 +20,10 @@ var CategoriesComponent = (function () {
         this.shopsService = shopsService;
         this.renderer = renderer;
         this.errorAddMessage = "";
+        this.errorUpdateMessage = "";
         this.newCategory = new category_1.Category();
+        this.editCategory = new category_1.Category();
+        this.displayMode = 0;
         this.shops = [];
         this.categories = [];
     }
@@ -33,18 +37,66 @@ var CategoriesComponent = (function () {
             .subscribe(function (data) { return _this.addCategoryDone(data); }, function (error) { return _this.errorMessage = error; });
         this.newCategory = new category_1.Category();
     };
+    CategoriesComponent.prototype.showAddCategory = function () {
+        this.newCategory = new category_1.Category();
+        if (this.shops.length > 0) {
+            this.newCategory.ShopId = this.shops[0].Id;
+        }
+        this.displayMode = 1;
+    };
+    CategoriesComponent.prototype.updateCategory = function () {
+        var _this = this;
+        this.categoriesService.updateCategory(this.editCategory)
+            .subscribe(function (data) { return _this.updateCategoryDone(data); }, function (error) { return _this.errorMessage = error; });
+        this.editCategory = new category_1.Category();
+    };
+    CategoriesComponent.prototype.showUpdateCategory = function (category) {
+        this.editCategory = category;
+        this.displayMode = 2;
+    };
+    CategoriesComponent.prototype.returnCategories = function () {
+        this.displayMode = 0;
+    };
+    CategoriesComponent.prototype.deleteCategories = function () {
+        var _this = this;
+        var selectedRows = [];
+        for (var i = 0; i < this.categories.length; i++) {
+            if (this.categories[i].Selected) {
+                selectedRows.push(this.categories[i].Id);
+            }
+        }
+        if (selectedRows.length > 0) {
+            this.categoriesService.deleteCategories(selectedRows)
+                .subscribe(function (data) { return _this.deleteCategoriesDone(data); }, function (error) { return _this.errorMessage = error; });
+        }
+        else {
+        }
+    };
     CategoriesComponent.prototype.addCategoryDone = function (data) {
         if (data == "OK") {
             this.getCategories();
-            var event_1 = new MouseEvent('click', { bubbles: true });
-            this.renderer.invokeElementMethod(this.btBackToCategories.nativeElement, 'dispatchEvent', [event_1]);
+            this.returnCategories();
         }
         else {
             this.errorAddMessage = "There is an error when add new category. Please check your data again.";
         }
     };
-    CategoriesComponent.prototype.removeCategory = function (category) {
-        this.categoriesService.deleteCategoryById(category.id);
+    CategoriesComponent.prototype.updateCategoryDone = function (data) {
+        if (data == "OK") {
+            this.getCategories();
+            this.returnCategories();
+        }
+        else {
+            this.errorAddMessage = "There is an error when update category. Please check your data again.";
+        }
+    };
+    CategoriesComponent.prototype.deleteCategoriesDone = function (data) {
+        if (data == "OK") {
+            this.getCategories();
+        }
+        else {
+            this.errorAddMessage = "There is an error when delete categories. Please check your data again.";
+        }
     };
     CategoriesComponent.prototype.getShops = function () {
         var _this = this;

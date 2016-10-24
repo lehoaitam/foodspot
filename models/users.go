@@ -9,7 +9,7 @@ import (
 )
 
 type Users struct {
-	Id            int64
+	Id            int
 	Email         string    `orm:"size(128);unique" form:"Email" valid:"Required;Email"`
 	Password      string    `orm:"size(64)" form:"Password" valid:"Required;MinSize(6)"`
 	Repassword    string    `orm:"-" form:"Repassword" valid:"Required"`

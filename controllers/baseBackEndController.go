@@ -29,7 +29,7 @@ func (c *BaseBackEndController) LoginPath() string {
 }
 
 func (c *BaseBackEndController) GetLogin() *models.Users {
-	u := &models.Users{Id: c.GetSession("userinfo").(int64)}
+	u := &models.Users{Id: c.GetSession("userinfo").(int)}
 	u.Read()
 	return u
 }

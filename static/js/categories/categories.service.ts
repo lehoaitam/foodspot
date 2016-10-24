@@ -11,37 +11,38 @@ export class CategoriesService {
     lastId: number = 0;
     categories: Category[] = [];
 
-    private categoriesUrl = '/backoffice/categories-data';
+    private categoriesUrl = '/backoffice/categories/data';
+    private categoriesDeleteUrl = '/backoffice/categories/delete';
 
     constructor(private http: Http) {
 
     }
 
-    // Simulate POST /categories
     addCategory(category: Category): Observable<string> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         let body = JSON.stringify(category);
         return this.http.put(this.categoriesUrl, body, options)
-            .map(this.addCategoriesData)
+            .map(this.updateCategoriesData)
             .catch(this.handleError);
     }
 
-    // Simulate DELETE /categories/:id
-    deleteCategoryById(id: number): CategoriesService {
-        this.categories = this.categories
-            .filter(category => category.Id !== id);
-        return this;
+    updateCategory(category: Category): Observable<string> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        let body = JSON.stringify(category);
+        return this.http.post(this.categoriesUrl, body, options)
+            .map(this.updateCategoriesData)
+            .catch(this.handleError);
     }
 
-    // Simulate PUT /categories/:id
-    updateCategoryById(id: number, values: Object = {}): Category {
-        let category = this.getCategoryById(id);
-        if (!category) {
-            return null;
-        }
-        (<any>Object).assign(category, values);
-        return category;
+    deleteCategories(ids: any[]): Observable<string> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        let body = JSON.stringify(ids);
+        return this.http.post(this.categoriesDeleteUrl, body, options)
+            .map(this.updateCategoriesData)
+            .catch(this.handleError);
     }
 
     getAllCategories(): Observable<Category[]> {
@@ -50,14 +51,7 @@ export class CategoriesService {
             .catch(this.handleError);
     }
 
-    // Simulate GET /categories/:id
-    getCategoryById(id: number): Category {
-        return this.categories
-            .filter(category => category.Id === id)
-            .pop();
-    }
-
-    private addCategoriesData(res: Response) {
+    private updateCategoriesData(res: Response) {
         let body = res.json();
         return body;
     }

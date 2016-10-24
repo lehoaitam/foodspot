@@ -5,6 +5,7 @@ var Category = (function () {
         this.Name = '';
         this.ShopId = 0;
         this.ShopName = '';
+        this.Selected = false;
         Object.assign(this, values);
     }
     return Category;

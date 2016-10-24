@@ -6,7 +6,7 @@ import (
 	"foodspot/helpers"
 )
 
-func Signup(u *models.Users) (int64, error) {
+func Signup(u *models.Users) (int, error) {
 	var (
 		err error
 		msg string

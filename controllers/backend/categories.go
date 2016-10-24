@@ -4,7 +4,6 @@ import (
 	bc "foodspot/controllers"
 	"foodspot/models"
 	"encoding/json"
-	"strconv"
 )
 
 type CategoriesController struct {
@@ -14,7 +13,7 @@ type CategoriesController struct {
 type CategoryAjaxItem struct {
 	Id int
 	Name string
-	ShopId string
+	ShopId int
 	ShopName string
 }
 
@@ -24,10 +23,6 @@ func (c *CategoriesController) NestPrepare() {
 		return
 	}
 	c.Data["page_title"] = "Categories"
-
-	c.Data["HeadScripts"] = []string{
-		"/static/js/categories/main.js",
-	}
 }
 
 
@@ -45,7 +40,7 @@ func (c *CategoriesController) GetCategories() {
 		categoryItem := CategoryAjaxItem {
 			Id: int((*categories)[i].Id),
 			Name:(*categories)[i].Name,
-			ShopId: string((*categories)[i].Shops.Id),
+			ShopId: (*categories)[i].Shops.Id,
 			ShopName:(*categories)[i].Shops.Name,
 		}
 		responseJson = append(responseJson, categoryItem)
@@ -69,7 +64,7 @@ func (c *CategoriesController) AddCategory() {
 		u.Name = ob.Name
 		u.ActiveFlg = 1
 		u.Shops = &models.Shops{}
-		u.Shops.Id, _ = strconv.ParseInt(ob.ShopId, 10, 64)
+		u.Shops.Id = ob.ShopId
 
 		err := u.Insert()
 		if (err != nil) {
@@ -83,25 +78,62 @@ func (c *CategoriesController) AddCategory() {
 		c.Data["json"] = "Error"
 		c.ServeJSON()
 	}
-
-	//u := &models.Categories{}
-
-
-	/*err := u.Insert()
-	if err != nil {
-		c.Data["json"] = "Fail"
-		c.ServeJSON()
-		return
-	}
-	c.Data["json"] = "OK"
-	c.ServeJSON()
-	*/
 }
 
 func (c *CategoriesController) EditCategory() {
+	if !c.Ctx.Input.IsPost() {
+		c.Data["json"] = "Error"
+		c.ServeJSON()
+		return
+	}
+	var ob CategoryAjaxItem
+	err := json.Unmarshal(c.Ctx.Input.RequestBody, &ob)
 
+	if err == nil {
+		u := &models.Categories{}
+		models.GetCategories().Filter("Id", ob.Id).RelatedSel().One(u)
+		u.Name = ob.Name
+		u.Shops.Id = ob.ShopId
+
+		err := u.Update()
+		if (err != nil) {
+			c.Data["json"] = err.Error()
+			c.ServeJSON()
+			return
+		}
+		c.Data["json"] = "OK"
+		c.ServeJSON()
+	} else {
+		c.Data["json"] = "Error"
+		c.ServeJSON()
+	}
 }
 
-func (c *CategoriesController) DeleteCategory() {
+func (c *CategoriesController) DeleteCategories() {
+	if !c.Ctx.Input.IsPost() {
+		c.Data["json"] = "Error"
+		c.ServeJSON()
+		return
+	}
+	ob:= []int{}
+	err := json.Unmarshal(c.Ctx.Input.RequestBody, &ob)
 
+	if err == nil {
+		for _,id := range ob {
+			u := &models.Categories{}
+			u.Id = id
+			err := u.Delete()
+			if (err != nil) {
+				c.Data["json"] = err.Error()
+				c.ServeJSON()
+				return
+			}
+		}
+
+		c.Data["json"] = "OK"
+		c.ServeJSON()
+	} else {
+		c.Data["json"] = "Error"
+		c.ServeJSON()
+	}
 }

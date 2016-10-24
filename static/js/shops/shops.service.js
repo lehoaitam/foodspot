@@ -15,7 +15,7 @@ var Observable_1 = require('rxjs/Observable');
 var ShopsService = (function () {
     function ShopsService(http) {
         this.http = http;
-        this.shopsUrl = '/backoffice/shops-data';
+        this.shopsUrl = '/backoffice/shops/data';
     }
     ShopsService.prototype.getAllShops = function () {
         return this.http.get(this.shopsUrl)
