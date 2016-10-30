@@ -12,7 +12,7 @@ import (
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 
-	orm.RegisterDataBase("default", "mysql", beego.AppConfig.String("mysqluser") + ":" + beego.AppConfig.String("mysqluser") + "@/" + beego.AppConfig.String("mysqldb") + "?charset=utf8")
+	orm.RegisterDataBase("default", "mysql", beego.AppConfig.String("mysqluser") + ":" + beego.AppConfig.String("mysqlpass") + "@/" + beego.AppConfig.String("mysqldb") + "?charset=utf8")
 	orm.SetMaxIdleConns("default", 30)
 	orm.DefaultTimeLoc = time.UTC
 	orm.Debug = true
