@@ -1,12 +1,14 @@
-import {Component, enableProdMode, OnInit, ElementRef, ViewChild, Renderer} from '@angular/core';
+/// <reference path="../jquery/jquery.d.ts" />
+
+import {Component, enableProdMode, OnInit, Renderer} from '@angular/core';
 import {Shop} from "../shops/shop";
 import {Category} from "./category";
 import {ShopsService} from "../shops/shops.service";
 import {CategoriesService} from "./categories.service";
 
-/// <reference path="../../node_modules/jquery.d.ts" />
-
 //enableProdMode();
+
+import $ = require("jquery");
 
 @Component({
     selector: 'categories-app',
@@ -27,14 +29,13 @@ export class CategoriesComponent implements OnInit {
     shops: Shop[] = [];
     categories: Category[] = [];
 
-    @ViewChild('btBackToCategories') btBackToCategories:ElementRef;
-
     ngOnInit() {
         this.getCategories();
         this.getShops();
     }
 
     constructor(private categoriesService: CategoriesService, private shopsService: ShopsService, private renderer:Renderer) {
+
     }
 
     addCategory() {

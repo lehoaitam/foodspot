@@ -1,3 +1,4 @@
+/// <reference path="../jquery/jquery.d.ts" />
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,8 +13,6 @@ var core_1 = require('@angular/core');
 var category_1 = require("./category");
 var shops_service_1 = require("../shops/shops.service");
 var categories_service_1 = require("./categories.service");
-/// <reference path="../../node_modules/jquery.d.ts" />
-//enableProdMode();
 var CategoriesComponent = (function () {
     function CategoriesComponent(categoriesService, shopsService, renderer) {
         this.categoriesService = categoriesService;
@@ -108,10 +107,6 @@ var CategoriesComponent = (function () {
         this.categoriesService.getAllCategories()
             .subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
     };
-    __decorate([
-        core_1.ViewChild('btBackToCategories'), 
-        __metadata('design:type', core_1.ElementRef)
-    ], CategoriesComponent.prototype, "btBackToCategories", void 0);
     CategoriesComponent = __decorate([
         core_1.Component({
             selector: 'categories-app',
