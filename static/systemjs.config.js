@@ -8,8 +8,9 @@
         // map tells the System loader where to look for things
         map: {
             // our app is within the app folder
-            'categories': '/static/js/categories',
             'shops': '/static/js/shops',
+            'categories': '/static/js/categories',
+            'menus': '/static/js/menus',
             // angular bundles
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -35,6 +36,10 @@
             },
             'categories': {
                 main: './categories.js',
+                defaultExtension: 'js'
+            },
+            'menus': {
+                main: './menus.js',
                 defaultExtension: 'js'
             },
             'rxjs': {

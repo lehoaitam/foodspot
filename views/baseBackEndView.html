@@ -44,8 +44,16 @@
                 <li class="dropdown pull-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">User</a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"><a href="/backoffice/settings"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
-                        <li><a href="#"><a href="/backoffice/settings"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown pull-right" style="padding-right: 20px;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{.currentShopName}}</a>
+                    <ul class="dropdown-menu" role="menu">
+                        {{range $key, $val := .myShops}}
+                        <li><a href="/backoffice/settings/changeShop/{{$val.Id}}">{{$val.Name}}</a></li>
+                        {{end}}
                     </ul>
                 </li>
             </ul>
@@ -66,7 +74,7 @@
             <li {{if compare .page_title "Shops"}} class="active" {{end}}><a href="/backoffice/shops"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Shops</a></li>
             <li {{if compare .page_title "Categories"}} class="active" {{end}}><a href="/backoffice/categories"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>Categories</a></li>
             <li {{if compare .page_title "Foods"}} class="active" {{end}}><a href="/backoffice/foods"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Foods</a></li>
-            <li {{if compare .page_title "Menus"}} class="active" {{end}}><a href="/backoffice/menu"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Menus</a></li>
+            <li {{if compare .page_title "Menus"}} class="active" {{end}}><a href="/backoffice/menus"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Menus</a></li>
             <li role="presentation" class="divider"></li>
             <li {{if compare .page_title "Settings"}} class="active" {{end}}><a href="/backoffice/settings"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>Settings</a></li>
         </ul>

@@ -29,7 +29,7 @@ func (c *ShopsController) Get() {
 
 func (c *ShopsController) GetShops() {
 	shops := new([]*models.Shops)
-	num, _ := models.GetShops().Filter("ActiveFlg", 1).RelatedSel().All(shops)
+	num, _ := models.GetShops().Filter("ActiveFlg", 1).Filter("Users__id", c.UserInfo.Id).RelatedSel().All(shops)
 
 	var responseJson []ShopAjaxItem
 

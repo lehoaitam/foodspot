@@ -18,6 +18,9 @@ func init() {
 	beego.Router("/backoffice/categories", &backend_controllers.CategoriesController{})
 	beego.Router("/backoffice/categories/data", &backend_controllers.CategoriesController{}, "get:GetCategories;put:AddCategory;post:EditCategory")
 	beego.Router("/backoffice/categories/delete", &backend_controllers.CategoriesController{}, "post:DeleteCategories")
+	beego.Router("/backoffice/menus", &backend_controllers.MenusController{})
+	beego.Router("/backoffice/menus/data", &backend_controllers.MenusController{}, "get:GetMenus;put:AddMenus;post:EditMenus")
+	beego.Router("/backoffice/menus/delete", &backend_controllers.MenusController{}, "post:DeleteMenus")
 
 	// demo frontend template
 	beego.Router("/index", &frontend_controllers.TopController{})

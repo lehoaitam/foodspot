@@ -8,8 +8,8 @@ import (
 type BaseBackEndController struct {
 	BaseFrontEndController
 
-	Userinfo *models.Users
-	IsLogin bool
+	UserInfo *models.Users
+	IsLogin  bool
 }
 
 type NestPreparer interface {
@@ -42,6 +42,41 @@ func (c *BaseBackEndController) DelLogin() {
 	c.DelSession("userinfo")
 }
 
+func (c *BaseBackEndController) GetCurrentShop() *models.Shops {
+	if c.UserInfo == nil {
+		return nil
+	}
+	if c.GetSession("currentShop") == nil {
+		shops := c.GetShopsCache()
+		if len(*shops) > 0 {
+			c.SetSession("currentShop", (*shops)[0])
+			return (*shops)[0];
+		}
+	}
+	return c.GetSession("currentShop").(*models.Shops)
+}
+
+func (c *BaseBackEndController) SetCurrentShop(shop *models.Shops) {
+	c.SetSession("currentShop", shop)
+}
+
+func (c *BaseBackEndController) GetShopsCache() *[]*models.Shops {
+	if c.UserInfo == nil {
+		return nil
+	}
+	if c.GetSession("myShops") == nil {
+		shops := new([]*models.Shops)
+		models.GetShops().Filter("ActiveFlg", 1).Filter("Users__id", c.UserInfo.Id).RelatedSel().All(shops)
+		c.SetSession("myShops", shops)
+		return shops
+	}
+	return c.GetSession("myShops").(*[]*models.Shops)
+}
+
+func (c *BaseBackEndController) SetShopsCache(shops []*models.Shops) {
+	c.SetSession("myShops", shops)
+}
+
 func (c *BaseBackEndController) SetParams() {
 	c.Data["Params"] = make(map[string]string)
 	for k, v := range c.Input() {
@@ -52,11 +87,18 @@ func (c *BaseBackEndController) SetParams() {
 func (c *BaseBackEndController) Prepare() {
 	c.IsLogin = c.GetSession("userinfo") != nil
 	if c.IsLogin {
-		c.Userinfo = c.GetLogin()
+		c.UserInfo = c.GetLogin()
 	}
 
 	c.Data["IsLogin"] = c.IsLogin
-	c.Data["Userinfo"] = c.Userinfo
+	c.Data["Userinfo"] = c.UserInfo
+	c.Data["myShops"] = c.GetShopsCache()
+	currentShop := c.GetCurrentShop()
+	if currentShop == nil {
+		c.Data["currentShopName"] = ""
+	} else {
+		c.Data["currentShopName"] = currentShop.Name
+	}
 	c.Data["HeadStyles"] = []string{}
 	c.Data["HeadScripts"] = []string{}
 

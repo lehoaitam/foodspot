@@ -32,9 +32,9 @@ func (c *CategoriesController) Get() {
 
 func (c *CategoriesController) GetCategories() {
 	categories := new([]*models.Categories)
-	num, _ := models.GetCategories().Filter("ActiveFlg", 1).RelatedSel().All(categories)
+	num, _ := models.GetCategories().Filter("ActiveFlg", 1).Filter("Shops__Users__id", c.UserInfo.Id).RelatedSel().All(categories)
 
-	var responseJson []CategoryAjaxItem
+	responseJson := []CategoryAjaxItem{}
 
 	for i := 0; i < int(num); i++ {
 		categoryItem := CategoryAjaxItem {
