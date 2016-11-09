@@ -21,6 +21,9 @@ func init() {
 	beego.Router("/backoffice/menus", &backend_controllers.MenusController{})
 	beego.Router("/backoffice/menus/data", &backend_controllers.MenusController{}, "get:GetMenus;put:AddMenus;post:EditMenus")
 	beego.Router("/backoffice/menus/delete", &backend_controllers.MenusController{}, "post:DeleteMenus")
+	beego.Router("/backoffice/foods", &backend_controllers.FoodController{})
+	beego.Router("/backoffice/foods/data", &backend_controllers.FoodController{}, "get:GetFoods;put:AddFood;post:EditFood")
+	beego.Router("/backoffice/foods/delete", &backend_controllers.FoodController{}, "post:DeleteFoods")
 
 	// demo frontend template
 	beego.Router("/index", &frontend_controllers.TopController{})

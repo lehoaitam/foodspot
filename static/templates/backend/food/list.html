@@ -1,0 +1,120 @@
+<div class="panel-body" *ngIf="displayMode == 0">
+    <div class="col-lg-12">
+        <h1>Foods</h1>
+    </div>
+    <div class="bootstrap-table">
+        <div class="fixed-table-toolbar">
+            <div class="columns btn-group pull-right">
+                <button class="btn btn-default" type="button" name="refresh" title="Refresh" (click)="getFoods()"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button>
+                <button class="btn btn-default" type="button" name="add" title="Add new food" (click)="showAddFood()"><i class="glyphicon glyphicon-plus"></i></button>
+                <button class="btn btn-default" type="button" name="delete" title="Delete" (click)="deleteFoods()"><i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+            <div class="pull-right search">
+                <input class="form-control" placeholder="Search" type="text">
+            </div>
+        </div>
+        <div class="fixed-table-container" style="padding-bottom: 0px;">
+            <div class="fixed-table-header" style="display: block;">
+                <table>
+
+                </table>
+            </div>
+            <div class="fixed-table-body">
+                <div class="fixed-table-loading" style="top: 37px; display: none;">Loading, please wait…</div>
+                <table data-toggle="table" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="asc" class="table table-hover" style="margin-top: 0px;">
+                    <thead style="display: table-header-group;">
+                        <tr>
+                            <th class="bs-checkbox " style="width: 36px; ">
+                                <div class="th-inner ">
+                                    <input name="btSelectAll" type="checkbox">
+                                </div>
+                                <div class="fht-cell">
+                                </div>
+                            </th>
+                            <th style="">
+                                <div class="th-inner sortable">Id</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="">
+                                <div class="th-inner sortable">Name<span class="order"><span class="caret" style="margin: 10px 5px;"></span></span></div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="">
+                                <div class="th-inner sortable">Category</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="foods.length > 0">
+                        <tr *ngFor="let food of foods" attr.data-index="{{food.Id}}">
+                            <td class="bs-checkbox">
+                                <input attr.data-index="{{food.Id}}" value="{{food.Id}}" [(ngModel)]="food.Selected" name="selectedRow[]" type="checkbox">
+                            </td>
+                            <td><a href="javascript:void(0)" (click)="showUpdateFood(food)">{{food.Id}}</a></td>
+                            <td>{{food.Name}}</td>
+                            <td>{{food.CategoryName}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="foods.length == 0">
+                        <tr>
+                            <td colspan="4" class="center-align">No data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="footer" *ngIf="foods.length > 0">
+        <span class="food-count"><strong>{{foods.length}}</strong> {{foods.length == 1 ? 'item' : 'items'}}</span>
+    </div>
+</div>
+<div class="col-lg-12" *ngIf="displayMode == 1">
+    <div class="panel panel-default">
+        <div class="panel-heading">Add new food</div>
+        <div class="alert bg-danger" role="alert" *ngIf="errorAddMessage.length > 0">
+            <svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"/></svg> {{errorAddMessage}} <a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-lg-offset-3 col-sm-12 col-sm-offset-0">
+                <div class="form-group">
+                    <label>Food name</label>
+                    <input type="text" class="form-control" required placeholder="Name" [(ngModel)]="newFood.Name">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" [(ngModel)]="newFood.CategoryId" required>
+                        <option *ngFor="let category of categories" value="{{category.Id}}">{{category.Name}}</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="addFood()">Add</button>
+                <button type="button" #btBackToFoods class="btn btn-default" (click)="displayListForm()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12" *ngIf="displayMode == 2">
+    <div class="panel panel-default">
+        <div class="panel-heading">Update food</div>
+        <div class="alert bg-danger" role="alert" *ngIf="errorUpdateMessage.length > 0">
+            <svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"/></svg> {{errorUpdateMessage}} <a href="javascript:void(0)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-lg-offset-3 col-sm-12 col-sm-offset-0">
+                <div class="form-group">
+                    <label>Food name</label>
+                    <input type="text" class="form-control" required placeholder="Name" [(ngModel)]="editFood.Name">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" [(ngModel)]="editFood.CategoryId" required>
+                        <option *ngFor="let category of categories" [selected]="category.Id == editFood.CategoryId" value="{{category.Id}}">{{category.Name}}</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="updateFood()">Save</button>
+                <button type="button" #btBackToFoods class="btn btn-default" (click)="displayListForm()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
