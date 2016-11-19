@@ -8,14 +8,15 @@ import (
 )
 
 type Food struct {
-	Id         int64
-	Name       string      `orm:"size(128)" form:"Name" valid:"Required"`
-	Categories *Categories `orm:"rel(fk)"`
-	Price      float32     `orm:"size(9)" form:"Price" valid:"Required"`
-	ActiveFlg  byte        `orm:"default(1)"`
-	DeleteFlg  byte        `orm:"default(0)"`
-	Created    time.Time   `orm:"auto_now_add;type(datetime)"`
-	Updated    time.Time   `orm:"auto_now;type(datetime)"`
+	Id         	int64
+	Name       	string      `orm:"size(128)" form:"Name" valid:"Required"`
+	Description	string      `orm:"size(512)" form:"Description" valid:"Required"`
+	Categories 	*Categories `orm:"rel(fk)"`
+	Price      	float32     `orm:"size(9)" form:"Price" valid:"Required"`
+	ActiveFlg  	byte        `orm:"default(1)"`
+	DeleteFlg  	byte        `orm:"default(0)"`
+	Created    	time.Time   `orm:"auto_now_add;type(datetime)"`
+	Updated    	time.Time   `orm:"auto_now;type(datetime)"`
 }
 
 func init() {
