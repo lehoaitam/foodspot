@@ -12,8 +12,11 @@ type Shops struct {
 	Id            int
 	Name          string    `orm:"size(128)" form:"Name" valid:"Required"`
 	Users         *Users    `orm:"rel(fk)"`
-	ActiveFlg     byte		`orm:"default(1)"`
-	DeleteFlg     byte		`orm:"default(0)"`
+	Image         string    `orm:"size(256)" form:"Image" valid:"Required"`
+	Lat           float32   `orm:"size(9)" form:"Lat" valid:"Required"`
+	Long          float32   `orm:"size(9)" form:"Long" valid:"Required"`
+	ActiveFlg     byte	`orm:"default(1)"`
+	DeleteFlg     byte	`orm:"default(0)"`
 	Created       time.Time `orm:"auto_now_add;type(datetime)"`
 	Updated       time.Time `orm:"auto_now;type(datetime)"`
 }
