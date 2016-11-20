@@ -1,4 +1,4 @@
-import {Component, enableProdMode, OnInit, Renderer} from '@angular/core';
+import {Component, enableProdMode, OnInit, Renderer, ViewChild} from '@angular/core';
 
 import {Category} from '../categories/category';
 import {Food} from './food';
@@ -28,6 +28,9 @@ export class FoodComponent implements OnInit {
 
 	displayMode: number = 0;
 
+	@ViewChild("imageAddInput") imageAddInput;
+	@ViewChild("imageUpdateInput")  imageUpdateInput;
+	
 	constructor(private categoriesService: CategoriesService,
 			private foodService: FoodService,
 			private renderer: Renderer) {
@@ -82,15 +85,21 @@ export class FoodComponent implements OnInit {
 	
 
 	addFood() {
-		this.foodService.addFood(this.newFood)
-			.subscribe(
-				data => this.addFoodDone(data),
-				error => this.errorMessage = <any>error
-			)
+		let fileInput = this.imageAddInput.nativeElement;
+		if (fileInput.files && fileInput.files[0]) {
+			this.foodService.addFood(this.newFood, fileInput.files[0])
+				.subscribe(
+					data => this.addFoodDone(data),
+					error => this.errorMessage = <any>error
+				)
+		} else {
+			this.errorAddMessage = "Please upload an image";
+		}
 	}
 
 	updateFood() {
-		this.foodService.updateFood(this.editFood)
+		let fileInput = this.imageUpdateInput.nativeElement;
+		this.foodService.updateFood(this.editFood, fileInput.files[0])
 			.subscribe(
 				data => this.updateFoodDone(data),
 				error => this.errorMessage = <any>error

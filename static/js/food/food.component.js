@@ -61,12 +61,19 @@ var FoodComponent = (function () {
     };
     FoodComponent.prototype.addFood = function () {
         var _this = this;
-        this.foodService.addFood(this.newFood)
-            .subscribe(function (data) { return _this.addFoodDone(data); }, function (error) { return _this.errorMessage = error; });
+        var fileInput = this.imageAddInput.nativeElement;
+        if (fileInput.files && fileInput.files[0]) {
+            this.foodService.addFood(this.newFood, fileInput.files[0])
+                .subscribe(function (data) { return _this.addFoodDone(data); }, function (error) { return _this.errorMessage = error; });
+        }
+        else {
+            this.errorAddMessage = "Please upload an image";
+        }
     };
     FoodComponent.prototype.updateFood = function () {
         var _this = this;
-        this.foodService.updateFood(this.editFood)
+        var fileInput = this.imageUpdateInput.nativeElement;
+        this.foodService.updateFood(this.editFood, fileInput.files[0])
             .subscribe(function (data) { return _this.updateFoodDone(data); }, function (error) { return _this.errorMessage = error; });
     };
     FoodComponent.prototype.deleteFoods = function () {
@@ -109,6 +116,14 @@ var FoodComponent = (function () {
             this.errorMessage = "There is an error when delete foods. Please try again.";
         }
     };
+    __decorate([
+        core_1.ViewChild("imageAddInput"), 
+        __metadata('design:type', Object)
+    ], FoodComponent.prototype, "imageAddInput", void 0);
+    __decorate([
+        core_1.ViewChild("imageUpdateInput"), 
+        __metadata('design:type', Object)
+    ], FoodComponent.prototype, "imageUpdateInput", void 0);
     FoodComponent = __decorate([
         core_1.Component({
             selector: 'food-app',

@@ -20,19 +20,28 @@ var FoodService = (function () {
         this.foodUrl = '/backoffice/foods/data';
         this.foodDeleteUrl = '/backoffice/foods/delete';
     }
-    FoodService.prototype.addFood = function (food) {
-        var header = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: header });
-        var body = JSON.stringify(food);
-        return this.http.put(this.foodUrl, body, options)
+    FoodService.prototype.addFood = function (food, imageInput) {
+        var inputs = new FormData();
+        inputs.append("Image", imageInput);
+        inputs.append("Name", food.Name);
+        inputs.append("Description", food.Description);
+        inputs.append("Price", food.Price);
+        inputs.append("ActiveFlg", food.ActiveFlg);
+        inputs.append("CategoryId", food.CategoryId);
+        return this.http.put(this.foodUrl, inputs)
             .map(this.updateFoodData)
             .catch(this.handleError);
     };
-    FoodService.prototype.updateFood = function (food) {
-        var header = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: header });
-        var body = JSON.stringify(food);
-        return this.http.post(this.foodUrl, body, options)
+    FoodService.prototype.updateFood = function (food, imageInput) {
+        var inputs = new FormData();
+        inputs.append("Id", food.Id);
+        inputs.append("Image", imageInput);
+        inputs.append("Name", food.Name);
+        inputs.append("Description", food.Description);
+        inputs.append("Price", food.Price);
+        inputs.append("ActiveFlg", food.ActiveFlg);
+        inputs.append("CategoryId", food.CategoryId);
+        return this.http.post(this.foodUrl, inputs)
             .map(this.updateFoodData)
             .catch(this.handleError);
     };

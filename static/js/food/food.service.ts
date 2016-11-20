@@ -16,20 +16,29 @@ export class FoodService {
 
 	constructor(private http: Http) { }
 
-	addFood(food: Food): Observable<string> {
-		let header = new Headers({ 'Content-Type': 'application/json'});
-		let options = new RequestOptions({ headers: header });
-		let body = JSON.stringify(food);
-		return this.http.put(this.foodUrl, body, options)
+	addFood(food: Food, imageInput: any): Observable<string> {
+		let inputs = new FormData();
+        inputs.append("Image", imageInput);
+        inputs.append("Name", food.Name);
+		inputs.append("Description", food.Description);
+		inputs.append("Price", food.Price);
+		inputs.append("ActiveFlg", food.ActiveFlg);
+		inputs.append("CategoryId", food.CategoryId);
+		return this.http.put(this.foodUrl, inputs)
 			.map(this.updateFoodData)
 			.catch(this.handleError);
 	}
 
-	updateFood(food: Food): Observable<string> {
-		let header = new Headers({ 'Content-Type': 'application/json'});
-		let options = new RequestOptions({ headers: header });
-		let body = JSON.stringify(food);
-		return this.http.post(this.foodUrl, body, options)
+	updateFood(food: Food, imageInput: any): Observable<string> {
+		let inputs = new FormData();
+		inputs.append("Id", food.Id);
+        inputs.append("Image", imageInput);
+        inputs.append("Name", food.Name);
+		inputs.append("Description", food.Description);
+		inputs.append("Price", food.Price);
+		inputs.append("ActiveFlg", food.ActiveFlg);
+		inputs.append("CategoryId", food.CategoryId);
+		return this.http.post(this.foodUrl, inputs)
 			.map(this.updateFoodData)
 			.catch(this.handleError);
 	}
