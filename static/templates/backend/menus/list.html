@@ -43,6 +43,10 @@
                                 <div class="th-inner sortable">Name<span class="order"><span class="caret" style="margin: 10px 5px;"></span></span></div>
                                 <div class="fht-cell"></div>
                             </th>
+                            <th style="">
+                                <div class="th-inner sortable">Detail</div>
+                                <div class="fht-cell"></div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody *ngIf="menus.length > 0">
@@ -53,11 +57,12 @@
                             <td><a href="javascript:void(0)" (click)="showUpdateMenus(menu)">{{menu.Id}}</a></td>
                             <td><img title="{{menu.Image}}" src="{{menu.ImageURL}}" style="max-height: 100px"></td>
                             <td>{{menu.Name}}</td>
+                            <td><a href="/backoffice/menu-details/{{menu.Id}}">Detail</a></td>
                         </tr>
                     </tbody>
                     <tbody *ngIf="menus.length == 0">
                         <tr>
-                            <td colspan="4" class="center-align">No data</td>
+                            <td colspan="5" class="center-align">No data</td>
                         </tr>
                     </tbody>
                 </table>

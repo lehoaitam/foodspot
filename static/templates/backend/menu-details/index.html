@@ -1,0 +1,52 @@
+<div class="panel-body">
+    <div class="col-lg-12">
+        <h1>Create Menu</h1>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Foods</h4>
+            </div>
+            <div class="col-lg-12 fixed-table-container" style="padding-bottom: 0px;">
+                <div class="fixed-table-header" style="display: block;">
+                    <table>
+
+                    </table>
+                </div>
+                <div class="fixed-table-body">
+                    <div class="fixed-table-loading" style="top: 37px; display: none;">Loading, please wait…</div>
+                    <table data-toggle="table" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="asc" class="table table-hover" style="margin-top: 0px;">
+                        <thead style="display: table-header-group;">
+                        <tr>
+                            <th style="">
+                                <div class="th-inner sortable">Name</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody *ngIf="foods.length > 0">
+                            <tr *ngFor="let food of foods" attr.data-index="{{food.Id}}">
+                                <td>{{food.Name}}</td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="foods.length == 0">
+                            <tr>
+                                <td class="center-align">No data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>Menu</h4>
+            </div>
+            <div class="col-lg-12">
+                <img src="/static/uploads/menus/{{menuId}}" style="max-width: 100%">
+            </div>
+        </div>
+    </div>
+</div>

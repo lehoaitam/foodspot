@@ -11,6 +11,7 @@
             'shops': '/static/js/shops',
             'categories': '/static/js/categories',
             'menus': '/static/js/menus',
+            'menu-details': '/static/js/menu-details',
             'food': '/static/js/food',
             // angular bundles
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -41,6 +42,10 @@
             },
             'menus': {
                 main: './menus.js',
+                defaultExtension: 'js'
+            },
+            'menu-details': {
+                main: './menu-details.js',
                 defaultExtension: 'js'
             },
             'food': {
