@@ -38,6 +38,11 @@ var MenuDetailsContentComponent = (function () {
         this.foodsService.getAllFoods()
             .subscribe(function (foods) { return _this.foods = foods; }, function (error) { return _this.errorMessage = error; });
     };
+    MenuDetailsContentComponent.prototype.updateMenuDetails = function () {
+    };
+    MenuDetailsContentComponent.prototype.returnMenus = function () {
+        window.location.href = "/backoffice/menus";
+    };
     MenuDetailsContentComponent = __decorate([
         core_1.Component({
             templateUrl: '/static/templates/backend/menu-details/index.html',

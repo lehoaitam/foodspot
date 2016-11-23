@@ -51,4 +51,12 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy {
                 foods => this.foods = foods,
                 error =>  this.errorMessage = <any>error);
     }
+
+    updateMenuDetails() {
+
+    }
+
+    returnMenus() {
+        window.location.href = <any>"/backoffice/menus";
+    }
 }

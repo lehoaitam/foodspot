@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4ca2e1c-7f39-4746-b686-d9e276559b4d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/backend/menu-details.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-detail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-detail.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details-routing.module.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.component.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.module.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.service.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/templates/backend/menu-details/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/backend/menu-details.html" />
+    <list default="true" id="b4ca2e1c-7f39-4746-b686-d9e276559b4d" name="Default" comment="add menu-detail page (50%)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routers/router.go" afterPath="$PROJECT_DIR$/routers/router.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/systemjs.config.js" afterPath="$PROJECT_DIR$/static/systemjs.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/templates/backend/menus/list.html" afterPath="$PROJECT_DIR$/static/templates/backend/menus/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/baseBackEndView.html" afterPath="$PROJECT_DIR$/views/baseBackEndView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/backend/menu-details.go" afterPath="$PROJECT_DIR$/controllers/backend/menu-details.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/menu_details.go" afterPath="$PROJECT_DIR$/models/menu_details.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.js" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/templates/backend/menu-details/index.html" afterPath="$PROJECT_DIR$/static/templates/backend/menu-details/index.html" />
     </list>
     <ignored path="ufood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,11 +41,21 @@
       <file leaf-file-name="menu-details.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/backend/menu-details.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+            <state relative-caret-position="990">
+              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding>
                 <element signature="e#29#104#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu_details.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/menu_details.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,46 +82,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu-detail.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-detail.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu-details.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <marker date="1479826862117" expanded="true" signature="151:164" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu-details-routing.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details-routing.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu-details.content.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menu-details.content.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="-70">
+              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+              <folding>
+                <element signature="e#48#134#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,8 +97,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/backend/menu-details/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="797">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="1083">
+              <caret line="53" column="74" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="74" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -147,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu-details.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/backend/menu-details.html">
+      <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/backend/categories/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            <state relative-caret-position="723">
+              <caret line="116" column="124" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="124" />
               <folding />
             </state>
           </provider>
@@ -216,7 +180,6 @@
         <option value="$PROJECT_DIR$/static/js/menus/menus.ts" />
         <option value="$PROJECT_DIR$/static/js/menus/menu.ts" />
         <option value="$PROJECT_DIR$/controllers/backend/menus.go" />
-        <option value="$PROJECT_DIR$/models/menu_details.go" />
         <option value="$PROJECT_DIR$/models/shops.go" />
         <option value="$PROJECT_DIR$/models/food.go" />
         <option value="$PROJECT_DIR$/controllers/backend/menu-detail.go" />
@@ -229,14 +192,15 @@
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.service.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-detail.ts" />
         <option value="$PROJECT_DIR$/static/templates/backend/menus/list.html" />
-        <option value="$PROJECT_DIR$/controllers/backend/menu-details.go" />
         <option value="$PROJECT_DIR$/views/baseBackEndView.html" />
-        <option value="$PROJECT_DIR$/static/templates/backend/menu-details/index.html" />
         <option value="$PROJECT_DIR$/views/backend/menu-details.html" />
-        <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details-routing.module.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.module.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.component.ts" />
+        <option value="$PROJECT_DIR$/static/templates/backend/menu-details/index.html" />
+        <option value="$PROJECT_DIR$/models/menu_details.go" />
+        <option value="$PROJECT_DIR$/controllers/backend/menu-details.go" />
+        <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" />
       </list>
     </option>
   </component>
@@ -451,6 +415,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="categories" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foodspot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foodspot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -621,9 +611,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -678,126 +668,6 @@
       <recent name="F:\Working\projects\go_projects\src\foodspot\static\js\menus" />
       <recent name="F:\Working\projects\go_projects\src\foodspot\views" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/controllers/backend/food.go</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/food.go</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/js/food/food.component.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/js/food/food.component.ts</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/js/food/food.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/js/food/food.service.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/js/food/food.service.ts</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/js/food/food.ts</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/templates/backend/food/list.html</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/uploads/food/1</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/static/uploads/food/8</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Go Application.Run">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1313,7 +1183,8 @@
       <workItem from="1479731913696" duration="11270000" />
       <workItem from="1479745091441" duration="1724000" />
       <workItem from="1479822750578" duration="1887000" />
-      <workItem from="1479825160956" duration="1763000" />
+      <workItem from="1479825160956" duration="1848000" />
+      <workItem from="1479910877488" duration="1666000" />
     </task>
     <task id="LOCAL-00001" summary="set up go's ufood project">
       <created>1470511528371</created>
@@ -1490,11 +1361,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479548099540</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="add menu-detail page (50%)">
+      <created>1479826991221</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1479826991221</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180022000" />
+    <option name="totallyTimeSpent" value="181773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1515,8 +1393,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69974226" sideWeight="0.51180553" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24006236" sideWeight="0.5229167" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257989" sideWeight="0.49444443" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24006236" sideWeight="0.5229167" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32845187" sideWeight="0.47916666" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22525331" sideWeight="0.47777778" order="8" side_tool="false" content_ui="tabs" />
@@ -1576,7 +1454,8 @@
     <MESSAGE value="add jquery support" />
     <MESSAGE value="add menus" />
     <MESSAGE value="update models" />
-    <option name="LAST_COMMIT_MESSAGE" value="update models" />
+    <MESSAGE value="add menu-detail page (50%)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add menu-detail page (50%)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1628,13 +1507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/backend/categories/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="82" column="118" selection-start-line="82" selection-start-column="118" selection-end-line="82" selection-end-column="118" />
         </state>
       </provider>
     </entry>
@@ -1715,24 +1587,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/menus.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="79" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/food.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
           <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/shops.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1792,13 +1650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/menu_details.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/backend/food.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1723">
@@ -1830,14 +1681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routers/router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1863,16 +1706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/backend/menu-details.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
-          <folding>
-            <element signature="e#29#104#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1920,27 +1753,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/backend/menu-details/index.html">
+    <entry file="file://$PROJECT_DIR$/static/templates/backend/categories/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="723">
+          <caret line="116" column="124" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="124" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.module.ts">
+    <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
+        <state relative-caret-position="506">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
-            <element signature="e#0#46#0" expanded="true" />
+            <marker date="1479826862117" expanded="true" signature="151:164" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1963,20 +1789,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts">
+    <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+        <state relative-caret-position="220">
+          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/backend/menu-details/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1083">
+          <caret line="53" column="74" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routers/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.component.ts">
+    <entry file="file://$PROJECT_DIR$/models/shops.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="88">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/menus.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/menu_details.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/backend/menu-details.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding>
-            <marker date="1479826862117" expanded="true" signature="151:164" ph="..." />
+            <element signature="e#29#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-70">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="e#48#134#0" expanded="true" />
           </folding>
         </state>
       </provider>

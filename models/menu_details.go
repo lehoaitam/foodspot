@@ -55,7 +55,7 @@ func (m *MenuDetails) Delete() error {
 }
 
 func GetMenuDetails() orm.QuerySeter {
-	var table Menus
+	var table MenuDetails
 	return orm.NewOrm().QueryTable(table).OrderBy("-Id")
 }
 
