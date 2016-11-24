@@ -54,7 +54,7 @@ func (c *MenuDetailsController) GetMenuDetails() {
 			Top:(*menuDetails)[i].Top,
 			Width:(*menuDetails)[i].Width,
 			Height:(*menuDetails)[i].Height,
-			ImageURL:"/static/uploads/foods/" + strconv.Itoa(int((*menuDetails)[i].Id)) + "?" + time.Now().String(),
+			ImageURL:"/static/uploads/food/" + strconv.Itoa(int((*menuDetails)[i].Id)) + "?" + time.Now().String(),
 		}
 		responseJson = append(responseJson, menuDetailItem)
 	}

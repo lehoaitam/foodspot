@@ -1,6 +1,6 @@
 /// <reference path="../jquery/jquery.d.ts" />
 
-import {Component, enableProdMode, OnInit, ViewChild, OnDestroy} from '@angular/core';
+import {Component, enableProdMode, OnInit, ElementRef, OnDestroy, AfterViewInit, ViewChild, Renderer} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MenuDetail} from "./menu-detail";
 import {MenuDetailsService} from "./menu-details.service";
@@ -13,10 +13,10 @@ import {Food} from "../food/food";
 
 @Component({
     templateUrl: '/static/templates/backend/menu-details/index.html',
-    providers: [MenuDetailsService, FoodService],
+    providers: [MenuDetailsService, FoodService, Renderer],
 })
 
-export class MenuDetailsContentComponent implements OnInit, OnDestroy {
+export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterViewInit {
 
     errorMessage: string;
     menuId: number;
@@ -24,7 +24,10 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy {
     foods: Food[] = [];
     menuDetails: MenuDetail[] = [];
 
-    constructor(private route: ActivatedRoute, private menuDetailsService: MenuDetailsService, private foodsService: FoodService) {
+    @ViewChild('menuBGContainer') menuBGContainer:ElementRef;
+    @ViewChild('menuBG') menuBG:ElementRef;
+
+    constructor(private route: ActivatedRoute, private menuDetailsService: MenuDetailsService, private foodsService: FoodService, private renderer:Renderer) {
 
     }
 
@@ -32,6 +35,21 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy {
         this.menuId = +this.route.snapshot.params['id'];
         this.getMenuDetails(this.menuId);
         this.getFoods();
+    }
+
+    ngAfterViewInit() {
+        this.renderer.listen(this.menuBG.nativeElement, 'load', (event) => {
+            var width: number = event.target.width;
+            var height: number = event.target.height;
+
+            if (width > 768) {
+                height = (height * 1.0 / width) * 768;
+                width = 768;
+            }
+            this.renderer.setElementStyle(this.menuBGContainer.nativeElement, 'width', width + "px");
+            this.renderer.setElementStyle(this.menuBGContainer.nativeElement, 'height', height + "px");
+            this.renderer.setElementStyle(this.menuBGContainer.nativeElement, 'overflow', "hidden");
+        });
     }
 
     ngOnDestroy() {

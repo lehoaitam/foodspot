@@ -14,10 +14,11 @@ var router_1 = require("@angular/router");
 var menu_details_service_1 = require("./menu-details.service");
 var food_service_1 = require("../food/food.service");
 var MenuDetailsContentComponent = (function () {
-    function MenuDetailsContentComponent(route, menuDetailsService, foodsService) {
+    function MenuDetailsContentComponent(route, menuDetailsService, foodsService, renderer) {
         this.route = route;
         this.menuDetailsService = menuDetailsService;
         this.foodsService = foodsService;
+        this.renderer = renderer;
         this.foods = [];
         this.menuDetails = [];
     }
@@ -25,6 +26,20 @@ var MenuDetailsContentComponent = (function () {
         this.menuId = +this.route.snapshot.params['id'];
         this.getMenuDetails(this.menuId);
         this.getFoods();
+    };
+    MenuDetailsContentComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.renderer.listen(this.menuBG.nativeElement, 'load', function (event) {
+            var width = event.target.width;
+            var height = event.target.height;
+            if (width > 768) {
+                height = (height * 1.0 / width) * 768;
+                width = 768;
+            }
+            _this.renderer.setElementStyle(_this.menuBGContainer.nativeElement, 'width', width + "px");
+            _this.renderer.setElementStyle(_this.menuBGContainer.nativeElement, 'height', height + "px");
+            _this.renderer.setElementStyle(_this.menuBGContainer.nativeElement, 'overflow', "hidden");
+        });
     };
     MenuDetailsContentComponent.prototype.ngOnDestroy = function () {
     };
@@ -43,12 +58,20 @@ var MenuDetailsContentComponent = (function () {
     MenuDetailsContentComponent.prototype.returnMenus = function () {
         window.location.href = "/backoffice/menus";
     };
+    __decorate([
+        core_1.ViewChild('menuBGContainer'), 
+        __metadata('design:type', core_1.ElementRef)
+    ], MenuDetailsContentComponent.prototype, "menuBGContainer", void 0);
+    __decorate([
+        core_1.ViewChild('menuBG'), 
+        __metadata('design:type', core_1.ElementRef)
+    ], MenuDetailsContentComponent.prototype, "menuBG", void 0);
     MenuDetailsContentComponent = __decorate([
         core_1.Component({
             templateUrl: '/static/templates/backend/menu-details/index.html',
-            providers: [menu_details_service_1.MenuDetailsService, food_service_1.FoodService],
+            providers: [menu_details_service_1.MenuDetailsService, food_service_1.FoodService, core_1.Renderer],
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, menu_details_service_1.MenuDetailsService, food_service_1.FoodService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, menu_details_service_1.MenuDetailsService, food_service_1.FoodService, core_1.Renderer])
     ], MenuDetailsContentComponent);
     return MenuDetailsContentComponent;
 }());
