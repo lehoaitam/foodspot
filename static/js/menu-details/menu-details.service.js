@@ -56,8 +56,9 @@ var MenuDetailsService = (function () {
     };
     MenuDetailsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [(typeof (_a = typeof http_1.Http !== 'undefined' && http_1.Http) === 'function' && _a) || Object])
     ], MenuDetailsService);
     return MenuDetailsService;
+    var _a;
 }());
 exports.MenuDetailsService = MenuDetailsService;

@@ -20,7 +20,11 @@ var MenuDetailsContentComponent = (function () {
         this.foodsService = foodsService;
         this.renderer = renderer;
         this.foods = [];
+        this.selectedFoodRowIndex = -1;
         this.menuDetails = [];
+        this.selectedMenuDetailIndex = -1;
+        this.dragX = 0;
+        this.dragY = 0;
     }
     MenuDetailsContentComponent.prototype.ngOnInit = function () {
         this.menuId = +this.route.snapshot.params['id'];
@@ -54,6 +58,48 @@ var MenuDetailsContentComponent = (function () {
             .subscribe(function (foods) { return _this.foods = foods; }, function (error) { return _this.errorMessage = error; });
     };
     MenuDetailsContentComponent.prototype.updateMenuDetails = function () {
+    };
+    MenuDetailsContentComponent.prototype.selectFoodRow = function (index) {
+        if (this.selectedFoodRowIndex == index) {
+            this.foods[this.selectedFoodRowIndex].Selected = false;
+            this.selectedFoodRowIndex = -1;
+        }
+        else {
+            this.selectedFoodRowIndex = index;
+            this.foods[this.selectedFoodRowIndex].Selected = true;
+        }
+    };
+    MenuDetailsContentComponent.prototype.selectMenuDetail = function (index) {
+    };
+    MenuDetailsContentComponent.prototype.selectMenuBG = function () {
+        if (this.selectedMenuDetailIndex >= 0) {
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
+            this.selectedMenuDetailIndex = -1;
+        }
+    };
+    MenuDetailsContentComponent.prototype.mouseDownMenuDetail = function (index, event) {
+        if (this.selectedMenuDetailIndex >= 0) {
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
+        }
+        this.selectedMenuDetailIndex = index;
+        this.menuDetails[this.selectedMenuDetailIndex].Selected = true;
+        this.dragX = event.offsetX;
+        this.dragY = event.offsetY;
+        console.log(this.dragX + ',' + this.dragY);
+    };
+    MenuDetailsContentComponent.prototype.mouseMoveMenuDetail = function (index, event) {
+        if (this.selectedMenuDetailIndex == index) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+            this.menuDetails[index].Left += x - this.dragX;
+            this.menuDetails[index].Top += y - this.dragY;
+        }
+    };
+    MenuDetailsContentComponent.prototype.mouseUpMenuDetail = function (index) {
+        if (this.selectedMenuDetailIndex == index && this.selectedMenuDetailIndex >= 0) {
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
+            this.selectedMenuDetailIndex = -1;
+        }
     };
     MenuDetailsContentComponent.prototype.returnMenus = function () {
         window.location.href = "/backoffice/menus";

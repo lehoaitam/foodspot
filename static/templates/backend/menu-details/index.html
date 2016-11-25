@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <h4>Foods</h4>
             </div>
-            <div class="col-lg-12 fixed-table-container" style="padding-bottom: 0px;">
+            <div class="col-lg-12 fixed-table-container" style="padding-bottom: 0px; border: none">
                 <div class="fixed-table-header" style="display: block;">
                     <table>
 
@@ -25,8 +25,9 @@
                         </tr>
                         </thead>
                         <tbody *ngIf="foods.length > 0">
-                            <tr *ngFor="let food of foods" attr.data-index="{{food.Id}}">
-                                <td>{{food.Name}}</td>
+                            <tr *ngFor="let food of foods; let i = index" attr.data-index="{{food.Id}}">
+                                <td [style.background-color]="food.Selected ? '#30a5ff' : 'transparent'"
+                                    [style.color]="food.Selected ? 'white' : '#5f6468'" (click)="selectFoodRow(i)">{{food.Name}}</td>
                             </tr>
                         </tbody>
                         <tbody *ngIf="foods.length == 0">
@@ -44,13 +45,24 @@
             <div class="col-lg-12">
                 <h4>Menu</h4>
             </div>
-            <div class="col-lg-12 text-center">
-                <div #menuBGContainer style="margin: 0 auto; position: relative">
+            <div class="col-lg-12 text-center" style="background-color: white; padding: 20px">
+                <div #menuBGContainer style="margin: 0 auto; position: relative" (click)="selectMenuBG()">
                     <img src="/static/uploads/menus/{{menuId}}" #menuBG>
                     <div *ngIf="menuDetails.length > 0" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%">
-                        <div *ngFor="let detail of menuDetails" [style.position]="'absolute'" [style.background-color]="'rgba(0, 0, 0 , 0.2)'"
-                                attr.data-index="{{detail.Id}}" [style.left]="detail.Left + 'px'" [style.top]="detail.Top + 'px'" [style.width]="detail.Width + 'px'" [style.height]="detail.Height + 'px'">
-                            <img src="{{detail.ImageURL}}">
+                        <div *ngFor="let detail of menuDetails; let i = index"
+                                [style.position]="'absolute'"
+                                [style.z-index]="'1'"
+                                [style.background-color]="'rgba(0, 0, 0 , 0.2)'"
+                                [style.border]="detail.Selected ? '1px dashed #ccc' : null"
+                                [style.left]="detail.Left + 'px'"
+                                [style.top]="detail.Top + 'px'"
+                                [style.width]="detail.Width + 'px'"
+                                [style.height]="detail.Height + 'px'"
+                                attr.data-index="{{detail.Id}}"
+                                (mousedown)="mouseDownMenuDetail(i, $event); $event.stopPropagation()"
+                                (mousemove)="mouseMoveMenuDetail(i, $event)"
+                                (mouseup)="mouseUpMenuDetail(i)">
+                            <!--img src="{{detail.ImageURL}}"-->
                             <span style="position: absolute; top: 2px; left: 2px; color: white">{{detail.Name}}</span>
                         </div>
                     </div>
@@ -58,8 +70,11 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12 text-right">
-        <button type="button" class="btn btn-primary" (click)="updateMenuDetails()">Save</button>
-        <button type="button" class="btn btn-default" (click)="returnMenus()">Back</button>
+    <div class="row">
+        <div class="col-lg-12 text-right">
+            <hr>
+            <button type="button" class="btn btn-primary" (click)="updateMenuDetails()">Save</button>
+            <button type="button" class="btn btn-default" (click)="returnMenus()">Back</button>
+        </div>
     </div>
 </div>

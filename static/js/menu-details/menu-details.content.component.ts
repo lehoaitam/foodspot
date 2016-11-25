@@ -22,7 +22,12 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterView
     menuId: number;
 
     foods: Food[] = [];
+    selectedFoodRowIndex: number = -1;
+
     menuDetails: MenuDetail[] = [];
+    selectedMenuDetailIndex: number = -1;
+    private dragX: number = 0;
+    private dragY: number = 0;
 
     @ViewChild('menuBGContainer') menuBGContainer:ElementRef;
     @ViewChild('menuBG') menuBG:ElementRef;
@@ -72,6 +77,56 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterView
 
     updateMenuDetails() {
 
+    }
+
+    selectFoodRow(index) {
+        if (this.selectedFoodRowIndex == index) {
+            this.foods[this.selectedFoodRowIndex].Selected = false;
+            this.selectedFoodRowIndex = -1;
+        } else {
+            this.selectedFoodRowIndex = index;
+            this.foods[this.selectedFoodRowIndex].Selected = true;
+        }
+    }
+
+    selectMenuDetail(index) {
+
+    }
+
+    selectMenuBG() {
+        if (this.selectedMenuDetailIndex >= 0) {
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
+            this.selectedMenuDetailIndex = -1;
+        }
+    }
+
+    mouseDownMenuDetail(index, event) {
+        if (this.selectedMenuDetailIndex >= 0) {
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
+        }
+        this.selectedMenuDetailIndex = index;
+        this.menuDetails[this.selectedMenuDetailIndex].Selected = true;
+
+        this.dragX = event.offsetX;
+        this.dragY = event.offsetY;
+        console.log(this.dragX + ',' + this.dragY);
+    }
+
+    mouseMoveMenuDetail(index, event) {
+        if (this.selectedMenuDetailIndex == index) {
+            let x = event.offsetX;
+            let y = event.offsetY;
+
+            this.menuDetails[index].Left += x - this.dragX;
+            this.menuDetails[index].Top += y - this.dragY;
+        }
+    }
+
+    mouseUpMenuDetail(index) {
+        if (this.selectedMenuDetailIndex == index && this.selectedMenuDetailIndex >= 0) {
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
+            this.selectedMenuDetailIndex = -1;
+        }
     }
 
     returnMenus() {
