@@ -14,10 +14,10 @@ export class MenuDetailsService {
 
     }
 
-    updateMenuDetails(menu: MenuDetail, id): Observable<string> {
+    updateMenuDetails(menus: MenuDetail[], id): Observable<string> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        let body = JSON.stringify(menu);
+        let body = JSON.stringify(menus);
         return this.http.post(this.menuDetailsUrl + id, body, options)
             .map(this.updateMenuDetailsData)
             .catch(this.handleError);

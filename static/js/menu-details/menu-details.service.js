@@ -18,10 +18,10 @@ var MenuDetailsService = (function () {
         this.menuDetailsUrl = '/backoffice/menu-details/data/';
         this.menuDetailsDeleteUrl = '/backoffice/menu-details/delete';
     }
-    MenuDetailsService.prototype.updateMenuDetails = function (menu, id) {
+    MenuDetailsService.prototype.updateMenuDetails = function (menus, id) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        var body = JSON.stringify(menu);
+        var body = JSON.stringify(menus);
         return this.http.post(this.menuDetailsUrl + id, body, options)
             .map(this.updateMenuDetailsData)
             .catch(this.handleError);
@@ -56,9 +56,8 @@ var MenuDetailsService = (function () {
     };
     MenuDetailsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof http_1.Http !== 'undefined' && http_1.Http) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [http_1.Http])
     ], MenuDetailsService);
     return MenuDetailsService;
-    var _a;
 }());
 exports.MenuDetailsService = MenuDetailsService;

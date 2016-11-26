@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require("@angular/router");
+var menu_detail_1 = require("./menu-detail");
 var menu_details_service_1 = require("./menu-details.service");
 var food_service_1 = require("../food/food.service");
 var MenuDetailsContentComponent = (function () {
@@ -23,6 +24,7 @@ var MenuDetailsContentComponent = (function () {
         this.selectedFoodRowIndex = -1;
         this.menuDetails = [];
         this.selectedMenuDetailIndex = -1;
+        this.selectedMenuDetailResizeIndex = -1;
         this.dragX = 0;
         this.dragY = 0;
     }
@@ -58,48 +60,134 @@ var MenuDetailsContentComponent = (function () {
             .subscribe(function (foods) { return _this.foods = foods; }, function (error) { return _this.errorMessage = error; });
     };
     MenuDetailsContentComponent.prototype.updateMenuDetails = function () {
+        var _this = this;
+        this.menuDetailsService.updateMenuDetails(this.menuDetails, this.menuId)
+            .subscribe(function (data) { return _this.updateMenuDetailsDone(data); }, function (error) { return _this.errorMessage = error; });
+    };
+    MenuDetailsContentComponent.prototype.updateMenuDetailsDone = function (data) {
+        if (data == "OK") {
+            this.successMessage = "Menu detail updated successful.";
+        }
+        else {
+            this.errorMessage = "There is an error when update menu detail. Please check your data again.";
+        }
     };
     MenuDetailsContentComponent.prototype.selectFoodRow = function (index) {
         if (this.selectedFoodRowIndex == index) {
             this.foods[this.selectedFoodRowIndex].Selected = false;
             this.selectedFoodRowIndex = -1;
+            this.mouseUpMenuBG();
+            this.removeMenuDetail(this.menuDetails.length - 1);
         }
         else {
             this.selectedFoodRowIndex = index;
             this.foods[this.selectedFoodRowIndex].Selected = true;
+            var defaultSize = 80;
+            var newItem = new menu_detail_1.MenuDetail();
+            newItem.MenuId = this.menuId;
+            newItem.FoodId = this.foods[this.selectedFoodRowIndex].Id;
+            newItem.Name = this.foods[this.selectedFoodRowIndex].Name;
+            newItem.Width = defaultSize;
+            newItem.Height = defaultSize;
+            newItem.Left = this.menuBGContainer.nativeElement.offsetWidth / 2 - defaultSize / 2;
+            newItem.Top = this.menuBGContainer.nativeElement.offsetHeight / 2 - defaultSize / 2;
+            this.menuDetails.push(newItem);
+            this.selectedMenuDetailIndex = this.menuDetails.length - 1;
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = true;
+            this.dragX = defaultSize / 2;
+            this.dragY = defaultSize / 2;
+            for (var i = 0; i < this.menuDetails.length - 1; i++) {
+                this.menuDetails[i].Hidden = true;
+            }
         }
     };
-    MenuDetailsContentComponent.prototype.selectMenuDetail = function (index) {
+    MenuDetailsContentComponent.prototype.mouseMoveMenuBG = function (event) {
+        if (this.selectedMenuDetailResizeIndex >= 0) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+            var minSize = 40;
+            if (event.target.id == 'mover') {
+                if (this.menuDetails[this.selectedMenuDetailResizeIndex].Width + x - this.dragX > minSize) {
+                    this.menuDetails[this.selectedMenuDetailResizeIndex].Width += x - this.dragX;
+                }
+                if (this.menuDetails[this.selectedMenuDetailResizeIndex].Height + y - this.dragY > minSize) {
+                    this.menuDetails[this.selectedMenuDetailResizeIndex].Height += y - this.dragY;
+                }
+            }
+            else if (event.target.id == 'menuBG') {
+                if (x - this.menuDetails[this.selectedMenuDetailResizeIndex].Left + this.dragX > minSize) {
+                    this.menuDetails[this.selectedMenuDetailResizeIndex].Width = x - this.menuDetails[this.selectedMenuDetailResizeIndex].Left - this.dragX + 5;
+                }
+                if (y - this.menuDetails[this.selectedMenuDetailResizeIndex].Top + this.dragY > minSize) {
+                    this.menuDetails[this.selectedMenuDetailResizeIndex].Height = y - this.menuDetails[this.selectedMenuDetailResizeIndex].Top - this.dragY + 5;
+                }
+            }
+            else {
+                if (x + this.dragX > minSize) {
+                    this.menuDetails[this.selectedMenuDetailResizeIndex].Width = x - this.dragX;
+                }
+                if (y + this.dragY > minSize) {
+                    this.menuDetails[this.selectedMenuDetailResizeIndex].Height = y - this.dragY;
+                }
+            }
+        }
+        if (this.selectedMenuDetailIndex >= 0) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+            if (event.target.id == 'menuBG') {
+                this.menuDetails[this.selectedMenuDetailIndex].Left = x - this.dragX;
+                this.menuDetails[this.selectedMenuDetailIndex].Top = y - this.dragY;
+            }
+            else {
+                this.menuDetails[this.selectedMenuDetailIndex].Left += x - this.dragX;
+                this.menuDetails[this.selectedMenuDetailIndex].Top += y - this.dragY;
+            }
+        }
     };
-    MenuDetailsContentComponent.prototype.selectMenuBG = function () {
+    MenuDetailsContentComponent.prototype.mouseUpMenuBG = function () {
         if (this.selectedMenuDetailIndex >= 0) {
             this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
-            this.selectedMenuDetailIndex = -1;
+        }
+        this.selectedMenuDetailResizeIndex = -1;
+        this.selectedMenuDetailIndex = -1;
+        for (var i = 0; i < this.menuDetails.length; i++) {
+            this.menuDetails[i].Hidden = false;
+        }
+        if (this.selectedFoodRowIndex >= 0) {
+            this.foods[this.selectedFoodRowIndex].Selected = false;
+            this.selectedFoodRowIndex = -1;
         }
     };
     MenuDetailsContentComponent.prototype.mouseDownMenuDetail = function (index, event) {
         if (this.selectedMenuDetailIndex >= 0) {
             this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
         }
-        this.selectedMenuDetailIndex = index;
-        this.menuDetails[this.selectedMenuDetailIndex].Selected = true;
-        this.dragX = event.offsetX;
-        this.dragY = event.offsetY;
-        console.log(this.dragX + ',' + this.dragY);
-    };
-    MenuDetailsContentComponent.prototype.mouseMoveMenuDetail = function (index, event) {
-        if (this.selectedMenuDetailIndex == index) {
-            var x = event.offsetX;
-            var y = event.offsetY;
-            this.menuDetails[index].Left += x - this.dragX;
-            this.menuDetails[index].Top += y - this.dragY;
+        if (this.selectedMenuDetailIndex == index || this.selectedMenuDetailIndex < 0) {
+            this.selectedMenuDetailIndex = index;
+            this.menuDetails[this.selectedMenuDetailIndex].Selected = true;
+            this.dragX = event.offsetX;
+            this.dragY = event.offsetY;
+        }
+        for (var i = 0; i < this.menuDetails.length; i++) {
+            if (i != index) {
+                this.menuDetails[i].Hidden = true;
+            }
         }
     };
-    MenuDetailsContentComponent.prototype.mouseUpMenuDetail = function (index) {
-        if (this.selectedMenuDetailIndex == index && this.selectedMenuDetailIndex >= 0) {
-            this.menuDetails[this.selectedMenuDetailIndex].Selected = false;
-            this.selectedMenuDetailIndex = -1;
+    MenuDetailsContentComponent.prototype.mouseDownMenuDetailResize = function (index, event) {
+        if (this.selectedMenuDetailResizeIndex < 0) {
+            this.selectedMenuDetailResizeIndex = index;
+            this.dragX = event.offsetX;
+            this.dragY = event.offsetY;
         }
+        for (var i = 0; i < this.menuDetails.length; i++) {
+            if (i != index) {
+                this.menuDetails[i].Hidden = true;
+            }
+        }
+    };
+    MenuDetailsContentComponent.prototype.removeMenuDetail = function (index) {
+        this.menuDetails.splice(index, 1);
     };
     MenuDetailsContentComponent.prototype.returnMenus = function () {
         window.location.href = "/backoffice/menus";

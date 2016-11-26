@@ -9,6 +9,7 @@ var MenuDetail = (function () {
         this.Height = 0;
         this.ImageURL = '';
         this.Selected = false;
+        this.Hidden = false;
         Object.assign(this, values);
     }
     return MenuDetail;
