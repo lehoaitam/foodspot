@@ -2,16 +2,47 @@ package frontend_controllers
 
 import (
 	bc "foodspot/controllers"
+	"foodspot/models"
+	"strconv"
+	"time"
+
+	"github.com/astaxie/beego"
 )
+
+const ShopImagePath = "/static/uploads/shops/"
 
 type TopController struct {
 	bc.BaseFrontEndController
 }
 
+type ShopAjaxItem struct {
+	Id       int
+	Name     string
+	Image    string
+	ImageURL string
+}
+
 func (c *TopController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
+	c.Data["page_title"] = c.Tr("top.title")
+	beego.Trace(c.Data["page_title"])
 	c.TplName = "frontend/index.html"
+	c.Data["shops"] = getShops()
+}
+
+func getShops() []ShopAjaxItem {
+	shops := new([]*models.Shops)
+	num, _ := models.GetShops().Filter("ActiveFlg", 1).All(shops)
+	results := []ShopAjaxItem{}
+	for i := 0; i < int(num); i++ {
+		shopItem := ShopAjaxItem{
+			Id:       (*shops)[i].Id,
+			Name:     (*shops)[i].Name,
+			Image:    (*shops)[i].Image,
+			ImageURL: ShopImagePath + strconv.Itoa(int((*shops)[i].Id)) + "?" + time.Now().String(),
+		}
+		results = append(results, shopItem)
+	}
+	return results
 }
 
 // Demo frontend template

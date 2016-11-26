@@ -1,10 +1,13 @@
 package controllers
+
 import (
-	"github.com/astaxie/beego"
-	"github.com/beego/i18n"
 	"strings"
+
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	"github.com/beego/i18n"
 )
+
 var langTypes []string // Languages that are supported.
 // baseController represents base router for all other app routers.
 // It implemented some methods for the same implementation;
@@ -55,4 +58,5 @@ func getLang(ctx *context.Context) string {
 // It's used for language option check and setting.
 func (this *BaseFrontEndController) Prepare() {
 	this.Data["Lang"] = getLang(this.Ctx)
+	this.Layout = "baseFrontEndView.html"
 }

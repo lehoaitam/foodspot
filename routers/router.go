@@ -9,6 +9,7 @@ import (
 
 func init() {
 	beego.Router("/", &frontend_controllers.TopController{})
+	beego.Router("/shop/:id([0-9]+)", &frontend_controllers.ShopController{})
 	beego.Router("/login", &backend_controllers.LoginController{}, "get,post:Login")
 	beego.Router("/logout", &backend_controllers.LoginController{}, "get:Logout")
 	beego.Router("/signup", &backend_controllers.LoginController{}, "get,post:Signup")
