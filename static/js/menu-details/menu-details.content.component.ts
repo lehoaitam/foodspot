@@ -10,7 +10,6 @@ import {FoodService} from "../food/food.service";
 
 import $ = require("jquery");
 import {Food} from "../food/food";
-import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     templateUrl: '/static/templates/backend/menu-details/index.html',
@@ -18,8 +17,8 @@ import {forEach} from "@angular/router/src/utils/collection";
 })
 
 export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterViewInit {
-    successMessage: string;
-    errorMessage: string;
+    successMessage: string = "";
+    errorMessage: string = "";
     menuId: number;
 
     foods: Food[] = [];
