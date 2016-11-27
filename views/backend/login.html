@@ -11,10 +11,6 @@
         padding-top: 50px;
     }
 
-    body {
-        background: #fff;
-    }
-
     .input-field input[type=date]:focus + label,
     .input-field input[type=text]:focus + label,
     .input-field input[type=email]:focus + label,
@@ -34,7 +30,7 @@
 <main>
     <img class="responsive-img" style="width: 250px;" src="/static/images/backend/logo.png" />
     <div class="section"></div>
-    <h5 class="indigo-text">{{i18n .Lang "backend-login.enter_values"}}</h5>
+    <h5 class="indigo-text">Please login into your account</h5>
     <div class="section"></div>
     <div class="container">
         <div class="row">
@@ -67,12 +63,12 @@
                         </div>
                         <br/>
                         <div class='row'>
-                            <div class='col-sm-6'>
+                            <div class='col-sm-12'>
                                 <a href="/signup">Create account</a>
                             </div>
-                            <div class='col-sm-6'>
+                            <!--div class='col-sm-6'>
                                 <a href='#!'>Forgot Password?</a>
-                            </div>
+                            </div-->
                         </div>
                     </form>
                 </div>

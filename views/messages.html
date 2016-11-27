@@ -1,14 +1,14 @@
 {{if .flash}}
 {{if (index .flash "warning")}}
-<div class="card-panel yellow darken-3" style="padding: 5px">
+<div style="padding: 5px; color: orange">
     {{(index .flash "warning")}}
 </div>
 {{else if (index .flash "error")}}
-<div class="card-panel red darken-1" style="padding: 5px">
+<div style="padding: 5px; color: red">
     {{(index .flash "error")}}
 </div>
 {{else if (index .flash "success")}}
-<div class="card-panel blue darken-1" style="padding: 5px">
+<div style="padding: 5px; color: darkgreen">
     {{(index .flash "success")}}
 </div>
 {{end}}

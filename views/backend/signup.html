@@ -1,7 +1,89 @@
-<div class="container">
-    <div class="row vertical-offset-75">
+<style>
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 
-        <p>Sign up Form</p>
+    main {
+        flex: 1 0 auto;
+        text-align: center;
+        padding-top: 50px;
+    }
 
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+        color: #e91e63;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+        border-bottom: 2px solid #e91e63;
+        box-shadow: none;
+    }
+</style>
+
+<main>
+    <img class="responsive-img" style="width: 250px;" src="/static/images/backend/logo.png" />
+    <div class="section"></div>
+    <h5 class="indigo-text">Please enter your account information</h5>
+    <div class="section"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <div class="z-depth-1 grey lighten-4" style="padding: 32px 32px 0px 32px; border: 1px solid #EEE;">
+                    <form method="post">
+                        <div class='row'>
+                            {{template "messages.html" .}}
+                        </div>
+                        <div class='row'>
+                            <div class='col s12'>
+                            </div>
+                        </div>
+                        <div class="control-group form-group">
+                            <div class="controls input-field">
+                                <label for='email' data-error="Invalid email">Your email</label>
+                                <input class='form-control validate' type='email' name='Email' id='Email' required/>
+                            </div>
+                        </div>
+
+                        <div class="control-group form-group">
+                            <div class="controls input-field">
+                                <label for='password'>Your password</label>
+                                <input class='form-control validate' type='password' name='Password' id='Password' required/>
+                            </div>
+                        </div>
+
+                        <div class="control-group form-group">
+                            <div class="controls input-field">
+                                <label for='password'>Confirm your password</label>
+                                <input class='form-control validate' type='password' name='Repassword' id='Repassword' required/>
+                            </div>
+                        </div>
+
+                        <div class="control-group form-group">
+                            <div class="controls input-field">
+                                <label for='email' data-error="Invalid text">Your shop name</label>
+                                <input class='form-control validate' type='text' name='ShopName' id='ShopName' required/>
+                            </div>
+                        </div>
+
+                        <div class='row'>
+                            <button type='submit' name='btn_register' class='btn btn-primary'>Sign up</button>
+                        </div>
+                        <br/>
+                        <div class='row'>
+                            <div class='col-sm-12'>
+                                <a href="/login">Has account? Login here</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</main>

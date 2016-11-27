@@ -22,7 +22,7 @@ type Users struct {
 
 func (u *Users) Valid(v *validation.Validation) {
 	if u.Password != u.Repassword {
-		v.SetError("Repassword", "Does not matched password, repassword")
+		v.SetError("Repassword", "Your password does not matched.")
 	}
 }
 

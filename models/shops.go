@@ -31,11 +31,8 @@ func (u *Shops) TableUnique() [][]string {
 	}
 }
 
-func (m *Shops) Insert() error {
-	if _, err := orm.NewOrm().Insert(m); err != nil {
-		return err
-	}
-	return nil
+func (m *Shops) Insert() (int64, error) {
+	return orm.NewOrm().Insert(m)
 }
 
 func (m *Shops) Read(fields ...string) error {

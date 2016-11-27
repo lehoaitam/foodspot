@@ -78,10 +78,26 @@ func (c *LoginController) Signup() {
 		return
 	}
 
+	//insert default shop
+	shopName := c.GetString("ShopName")
+	shop := &models.Shops{}
+	shop.Name = shopName
+	shop.ActiveFlg = 1
+	shop.Users = &models.Users{}
+	shop.Users.Id = id
+
+	shopId, err1 := shop.Insert()
+	if (err1 != nil) {
+		c.Logout()
+		return
+	}
+	shop.Id = int(shopId)
+
 	flash.Success("Register user")
 	flash.Store(&c.Controller)
 
 	c.SetLogin(u)
+	c.SetCurrentShop(shop)
 
-	c.Redirect(c.URLFor("UsersController.Index"), 303)
+	c.Redirect(c.URLFor("CategoriesController.Get"), 303)
 }
