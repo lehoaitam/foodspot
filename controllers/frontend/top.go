@@ -6,7 +6,10 @@ import (
 	"strconv"
 	"time"
 
+	"fmt"
+
 	"github.com/astaxie/beego"
+	"github.com/beego/i18n"
 )
 
 const ShopImagePath = "/static/uploads/shops/"
@@ -23,8 +26,8 @@ type ShopAjaxItem struct {
 }
 
 func (c *TopController) Get() {
-	c.Data["page_title"] = c.Tr("top.title")
-	beego.Trace(c.Data["page_title"])
+	c.Data["page_title"] = i18n.Tr(fmt.Sprint(c.Data["Lang"]), "top.title")
+	beego.Trace(fmt.Sprint(c.Data["Lang"]))
 	c.TplName = "frontend/index.html"
 	c.Data["shops"] = getShops()
 }

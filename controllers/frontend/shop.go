@@ -22,9 +22,10 @@ func (this *ShopController) Get() {
 	this.TplName = "frontend/shop.html"
 
 	id, _ := strconv.ParseInt(this.Ctx.Input.Param(":id"), 10, 0)
-	this.Data["shop"] = getShop(id)
+	shopItem := getShop(id)
+	this.Data["shop"] = shopItem
 	this.Data["menus"] = getMenus(id)
-	this.Data["page_title"] = "Shop - FootSpot"
+	this.Data["page_title"] = shopItem.Name
 }
 
 func getShop(id int64) ShopAjaxItem {
