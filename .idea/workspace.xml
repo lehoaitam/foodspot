@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4ca2e1c-7f39-4746-b686-d9e276559b4d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/locale_en-US.ini" afterPath="$PROJECT_DIR$/conf/locale_en-US.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/backend/login.go" afterPath="$PROJECT_DIR$/controllers/backend/login.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/signup.go" afterPath="$PROJECT_DIR$/libs/signup.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/shops.go" afterPath="$PROJECT_DIR$/models/shops.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/users.go" afterPath="$PROJECT_DIR$/models/users.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/backend/login.html" afterPath="$PROJECT_DIR$/views/backend/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/backend/signup.html" afterPath="$PROJECT_DIR$/views/backend/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/messages.html" afterPath="$PROJECT_DIR$/views/messages.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/baseFrontEndController.go" afterPath="$PROJECT_DIR$/controllers/baseFrontEndController.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/baseBackEndView.html" afterPath="$PROJECT_DIR$/views/baseBackEndView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/baseFrontEndView.html" afterPath="$PROJECT_DIR$/views/baseFrontEndView.html" />
     </list>
     <ignored path="ufood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,33 +26,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="menu-details.content.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-              <folding>
-                <element signature="e#48#171#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="categories.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/backend/categories.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="8" column="25" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="25" />
+            <state relative-caret-position="352">
+              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routers/router.go">
+      <file leaf-file-name="baseBackEndController.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/baseBackEndController.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="462">
+              <caret line="87" column="51" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -105,34 +88,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/backend/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="65" column="51" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
+            <state relative-caret-position="616">
+              <caret line="64" column="41" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/backend/menu-details/index.html">
+      <file leaf-file-name="baseFrontEndView.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/baseFrontEndView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="14" selection-start-line="3" selection-start-column="8" selection-end-line="5" selection-end-column="14" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="382">
+              <caret line="60" column="90" selection-start-line="60" selection-start-column="83" selection-end-line="60" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseFrontEndController.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/baseFrontEndController.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="766">
+              <caret line="60" column="26" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseBackEndView.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/baseBackEndView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="45" column="86" selection-start-line="45" selection-start-column="86" selection-end-line="45" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,8 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/js/categories/category.js" />
-        <option value="$PROJECT_DIR$/conf/app.conf" />
         <option value="$PROJECT_DIR$/static/node_modules/jquery.d.ts" />
         <option value="$PROJECT_DIR$/models/categories.go" />
         <option value="$PROJECT_DIR$/static/js/categories/category.ts" />
@@ -195,7 +184,6 @@
         <option value="$PROJECT_DIR$/routers/router.go" />
         <option value="$PROJECT_DIR$/static/js/menus/menus.component.ts" />
         <option value="$PROJECT_DIR$/static/templates/backend/menus/list.html" />
-        <option value="$PROJECT_DIR$/views/baseBackEndView.html" />
         <option value="$PROJECT_DIR$/views/backend/menu-details.html" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details-routing.module.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.module.ts" />
@@ -217,6 +205,9 @@
         <option value="$PROJECT_DIR$/models/users.go" />
         <option value="$PROJECT_DIR$/controllers/backend/login.go" />
         <option value="$PROJECT_DIR$/views/backend/login.html" />
+        <option value="$PROJECT_DIR$/controllers/baseFrontEndController.go" />
+        <option value="$PROJECT_DIR$/views/baseFrontEndView.html" />
+        <option value="$PROJECT_DIR$/views/baseBackEndView.html" />
       </list>
     </option>
   </component>
@@ -1236,7 +1227,7 @@
       <workItem from="1479992260768" duration="5901000" />
       <workItem from="1480077629239" duration="7713000" />
       <workItem from="1480143252808" duration="17388000" />
-      <workItem from="1480232275027" duration="3160000" />
+      <workItem from="1480232275027" duration="3952000" />
     </task>
     <task id="LOCAL-00001" summary="set up go's ufood project">
       <created>1470511528371</created>
@@ -1455,11 +1446,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480177355855</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="add sign up form">
+      <created>1480235462778</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1480235462778</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216008000" />
+    <option name="totallyTimeSpent" value="216800000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1536,7 +1534,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create a web server" />
     <MESSAGE value="test git" />
     <MESSAGE value="clean repository" />
     <MESSAGE value="change source path&#10;change project name&#10;add AngularJs &amp; Materialize framework" />
@@ -1561,7 +1558,8 @@
     <MESSAGE value="update angularjs to 2.1&#10;allow drag menu detail area" />
     <MESSAGE value="add missing angular 2 libraries&#10;add menu-detail page" />
     <MESSAGE value="add menu-detail page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add menu-detail page" />
+    <MESSAGE value="add sign up form" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sign up form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1574,13 +1572,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/menus/menus.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="63" column="5" selection-start-line="59" selection-start-column="4" selection-end-line="63" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/food/food.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
@@ -1641,13 +1632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/baseBackEndView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1738,6 +1722,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1745,6 +1730,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
           <caret line="938" column="1" selection-start-line="938" selection-start-column="1" selection-end-line="938" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,14 +1738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
           <caret line="108" column="5" selection-start-line="100" selection-start-column="4" selection-end-line="108" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/frontend/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1790,22 +1768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/baseBackEndController.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="27" column="48" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/baseFrontEndController.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="876">
-          <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1951,14 +1913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/backend/categories.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/shops.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -1975,10 +1929,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/frontend/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/backend/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="65" column="51" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
+        <state relative-caret-position="616">
+          <caret line="64" column="41" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/backend/categories.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/baseBackEndController.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="87" column="51" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/baseFrontEndController.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="766">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/baseFrontEndView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="60" column="90" selection-start-line="60" selection-start-column="83" selection-end-line="60" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/baseBackEndView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="45" column="86" selection-start-line="45" selection-start-column="86" selection-end-line="45" selection-end-column="86" />
           <folding />
         </state>
       </provider>

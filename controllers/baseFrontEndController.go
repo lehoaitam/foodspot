@@ -58,5 +58,6 @@ func getLang(ctx *context.Context) string {
 // It's used for language option check and setting.
 func (this *BaseFrontEndController) Prepare() {
 	this.Data["Lang"] = getLang(this.Ctx)
+	this.Data["IsLogin"] = this.GetSession("userinfo") != nil
 	this.Layout = "baseFrontEndView.html"
 }
