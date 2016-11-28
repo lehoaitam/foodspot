@@ -19,6 +19,8 @@ type BaseFrontEndController struct {
 
 func init() {
 	beego.AddFuncMap("i18n", i18n.Tr)
+	beego.AddFuncMap("mod", mod)
+	beego.AddFuncMap("add", add)
 
 	// Initialize language type list.
 	langTypes = strings.Split(beego.AppConfig.String("lang_types"), "|")
@@ -60,4 +62,14 @@ func (this *BaseFrontEndController) Prepare() {
 	this.Data["Lang"] = getLang(this.Ctx)
 	this.Data["IsLogin"] = this.GetSession("userinfo") != nil
 	this.Layout = "baseFrontEndView.html"
+}
+
+// Phép toán Modulus
+func mod(i, j int) int {
+	return i % j
+}
+
+// Phép toán cộng
+func add(i, j int) int {
+	return i + j
 }
