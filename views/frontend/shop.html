@@ -1,64 +1,70 @@
-<!-- Shops -->
-<style>
-    #menuCarousel.carousel {
-        height: 400px;
-    }
-    .carousel-inner {
-        height: 100%;
-    }
-    #menuCarousel.carousel .item, #menuCarousel.carousel .item.active, #menuCarousel.carousel .carousel-inner {
-        height: 100%;
-    }
-    #menuCarousel.carousel .fill {
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-size: cover;
-    }
-  </style>
-<div class="row">
-    <div class="col-lg-12">
-        <h2 class="page-header">{{.shop.Name}}</h2>
-    </div>
-</div>
+{{ template "baseFrontEndView.html" . }}
 
-<!-- Header Carousel -->
-<div class="row">
-    <div id="menuCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            {{range $index, $menu := .menus}}
-            <li data-target="#menuCarousel" data-slide-to="{{$index}}" {{if eq $index 0}} class="active" {{end}}></li>
-            {{end}}
-        </ol>
+{{ define "css" }}
+    <style>
+        #menuCarousel.carousel {
+            height: 400px;
+        }
+        .carousel-inner {
+            height: 100%;
+        }
+        #menuCarousel.carousel .item, #menuCarousel.carousel .item.active, #menuCarousel.carousel .carousel-inner {
+            height: 100%;
+        }
+        #menuCarousel.carousel .fill {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+{{ end }}
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            {{range $index, $menu := .menus}}
-            <div {{if eq $index 0}} class="item active" {{else}} class="item" {{end}}>
-                <div class="fill" style="background-image:url('{{$menu.ImageURL}}');"></div>
-                <div class="carousel-caption">
-                    <h2>{{$menu.Name}}</h2>
-                </div>
-            </div>
-            {{end}}
+{{ define "content" }}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">{{.shop.Name}}</h2>
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#menuCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#menuCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
     </div>
 
+    <!-- Header Carousel -->
+    <div class="row">
+        <div id="menuCarousel" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                {{range $index, $menu := .menus}}
+                <li data-target="#menuCarousel" data-slide-to="{{$index}}" {{if eq $index 0}} class="active" {{end}}></li>
+                {{end}}
+            </ol>
 
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                {{range $index, $menu := .menus}}
+                <div {{if eq $index 0}} class="item active" {{else}} class="item" {{end}}>
+                    <div class="fill" style="background-image:url('{{$menu.ImageURL}}');"></div>
+                    <div class="carousel-caption">
+                        <h2>{{$menu.Name}}</h2>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#menuCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#menuCarousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+    </div>
+{{ end }}
+
+{{ define "bottom_js" }}
     <!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 4000 //changes the speed
-    })
+        $('.carousel').carousel({
+            interval: 4000 //changes the speed
+        })
     </script>
-
-</div>
+{{ end }}

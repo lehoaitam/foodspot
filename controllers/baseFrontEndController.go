@@ -61,7 +61,6 @@ func getLang(ctx *context.Context) string {
 func (this *BaseFrontEndController) Prepare() {
 	this.Data["Lang"] = getLang(this.Ctx)
 	this.Data["IsLogin"] = this.GetSession("userinfo") != nil
-	this.Layout = "baseFrontEndView.html"
 }
 
 // Phép toán Modulus
