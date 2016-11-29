@@ -33,7 +33,7 @@
                 defaultExtension: 'js'
             },
             'shops': {
-                main: './shops.js',
+                main: './main.js',
                 defaultExtension: 'js'
             },
             'categories': {

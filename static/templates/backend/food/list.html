@@ -66,9 +66,9 @@
                             <td class="bs-checkbox">
                                 <input attr.data-index="{{food.Id}}" value="{{food.Id}}" [(ngModel)]="food.Selected" name="selectedRow[]" type="checkbox">
                             </td>
-                            <td><a href="javascript:void(0)" (click)="showUpdateFood(food)">{{food.Id}}</a></td>
+                            <td>{{food.Id}}</td>
                             <td><img *ngIf="food.Image" title="{{food.Image}}" src="{{food.ImageURL}}" style="max-width:100px;max-height: 100px"></td>
-                            <td>{{food.Name}}</td>
+                            <td><a href="javascript:void(0)" (click)="showUpdateFood(food)">{{food.Name}}</a></td>
                             <td>{{food.Description}}</td>
                             <td>{{food.CategoryName}}</td>
                             <td class="text-right">{{food.Price}}</td>

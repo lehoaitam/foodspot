@@ -9,16 +9,16 @@ import (
 )
 
 type Shops struct {
-	Id            int
-	Name          string    `orm:"size(128)" form:"Name" valid:"Required"`
-	Users         *Users    `orm:"rel(fk)"`
-	Image         string    `orm:"size(256)" form:"Image" valid:"Required"`
-	Lat           float32   `orm:"size(9)" form:"Lat" valid:"Required"`
-	Long          float32   `orm:"size(9)" form:"Long" valid:"Required"`
-	ActiveFlg     byte	`orm:"default(1)"`
-	DeleteFlg     byte	`orm:"default(0)"`
-	Created       time.Time `orm:"auto_now_add;type(datetime)"`
-	Updated       time.Time `orm:"auto_now;type(datetime)"`
+	Id        int
+	Name      string    `orm:"size(128)" form:"Name" valid:"Required"`
+	Users     *Users    `orm:"rel(fk)"`
+	Image     string    `orm:"size(256)" form:"Image" valid:"Required"`
+	Lat       float64   `orm:"size(9)" form:"Lat" valid:"Required"`
+	Long      float64   `orm:"size(9)" form:"Long" valid:"Required"`
+	ActiveFlg bool      `orm:"default(true)"`
+	DeleteFlg bool      `orm:"default(false)"`
+	Created   time.Time `orm:"auto_now_add;type(datetime)"`
+	Updated   time.Time `orm:"auto_now;type(datetime)"`
 }
 
 func (m *Shops) Valid(v *validation.Validation) {

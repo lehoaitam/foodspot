@@ -16,16 +16,51 @@ var ShopsService = (function () {
     function ShopsService(http) {
         this.http = http;
         this.shopsUrl = '/backoffice/shops/data';
+        this.shopsDeleteUrl = '/backoffice/shops/delete';
     }
     ShopsService.prototype.getAllShops = function () {
         return this.http.get(this.shopsUrl)
             .map(this.extractShopsData)
             .catch(this.handleError);
     };
+    ShopsService.prototype.addShop = function (shop, imageInput) {
+        var inputs = new FormData();
+        inputs.append("Image", imageInput);
+        inputs.append("Name", shop.Name);
+        inputs.append("ActiveFlg", shop.ActiveFlg);
+        inputs.append("Lat", shop.Lat);
+        inputs.append("Long", shop.Long);
+        return this.http.put(this.shopsUrl, inputs)
+            .map(this.updateShopData)
+            .catch(this.handleError);
+    };
+    ShopsService.prototype.updateShop = function (shop, imageInput) {
+        var inputs = new FormData();
+        inputs.append("Id", shop.Id);
+        inputs.append("Image", imageInput);
+        inputs.append("Name", shop.Name);
+        inputs.append("ActiveFlg", shop.ActiveFlg);
+        inputs.append("Lat", shop.Lat);
+        inputs.append("Long", shop.Long);
+        return this.http.post(this.shopsUrl, inputs)
+            .map(this.updateShopData)
+            .catch(this.handleError);
+    };
+    ShopsService.prototype.deleteShops = function (ids) {
+        var header = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: header });
+        var body = JSON.stringify(ids);
+        return this.http.post(this.shopsDeleteUrl, body, options)
+            .map(this.updateShopData)
+            .catch(this.handleError);
+    };
     ShopsService.prototype.extractShopsData = function (res) {
         var body = res.json();
         var result = body || {};
         return result;
+    };
+    ShopsService.prototype.updateShopData = function (res) {
+        return res.json();
     };
     ShopsService.prototype.handleError = function (error) {
         var errMsg = (error.message) ? error.message :

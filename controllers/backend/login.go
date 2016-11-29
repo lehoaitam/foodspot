@@ -4,9 +4,9 @@ import (
 	"github.com/astaxie/beego"
 
 	"foodspot/controllers"
-	"foodspot/models"
-	"foodspot/libs"
 	"foodspot/helpers"
+	"foodspot/libs"
+	"foodspot/models"
 )
 
 type LoginController struct {
@@ -35,7 +35,7 @@ func (c *LoginController) Login() {
 		c.SetLogin(users)
 
 		c.Redirect(c.URLFor("CategoriesController.Get"), 303)
-	}  else {
+	} else {
 		c.DelLogin()
 	}
 }
@@ -82,12 +82,12 @@ func (c *LoginController) Signup() {
 	shopName := c.GetString("ShopName")
 	shop := &models.Shops{}
 	shop.Name = shopName
-	shop.ActiveFlg = 1
+	shop.ActiveFlg = true
 	shop.Users = &models.Users{}
 	shop.Users.Id = id
 
 	shopId, err1 := shop.Insert()
-	if (err1 != nil) {
+	if err1 != nil {
 		c.Logout()
 		return
 	}
