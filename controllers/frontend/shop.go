@@ -11,11 +11,24 @@ type ShopController struct {
 	bc.BaseFrontEndController
 }
 
+type MenuDetailsAjaxItem struct {
+	Id int
+	MenuId int
+	FoodName string
+	FoodDescription string
+	FoodImageURL string
+	Left int
+	Top int
+	Width int
+	Height int
+}
+
 type MenusAjaxItem struct {
 	Id       int
 	Name     string
 	Image    string
 	ImageURL string
+	MenuDetails []MenuDetailsAjaxItem
 }
 
 func (this *ShopController) Get() {
@@ -53,6 +66,24 @@ func getMenus(shop_id int64) []MenusAjaxItem {
 			Image:    (*menus)[i].Image,
 			ImageURL: "/static/uploads/menus/" + strconv.Itoa(int((*menus)[i].Id)) + "?" + time.Now().String(),
 		}
+
+		menuDetails := new([]*models.MenuDetails)
+		menuDetailsRows, _ := models.GetMenuDetails().Filter("DeleteFlg", 0).Filter("Menus__id", menuItem.Id).RelatedSel().All(menuDetails)
+		menuItem.MenuDetails = []MenuDetailsAjaxItem{}
+		for j := 0; j < int(menuDetailsRows); j++ {
+			menuItem.MenuDetails = append(menuItem.MenuDetails, MenuDetailsAjaxItem{
+				Id:       int((*menuDetails)[j].Id),
+				MenuId:   (*menuDetails)[j].Menus.Id,
+				FoodName: (*menuDetails)[j].Food.Name,
+				FoodDescription:    (*menuDetails)[j].Food.Description,
+				FoodImageURL: 	"",
+				Left:     (*menuDetails)[j].Left,
+				Top:      (*menuDetails)[j].Top,
+				Width:    (*menuDetails)[j].Width,
+				Height:   (*menuDetails)[j].Height,
+			})
+		}
+
 		result = append(result, menuItem)
 	}
 
