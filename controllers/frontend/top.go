@@ -23,6 +23,8 @@ type ShopAjaxItem struct {
 	Name     string
 	Image    string
 	ImageURL string
+	Lat      float64
+	Long     float64
 }
 
 func (c *TopController) Get() {
@@ -42,6 +44,8 @@ func getShops() []ShopAjaxItem {
 			Name:     (*shops)[i].Name,
 			Image:    (*shops)[i].Image,
 			ImageURL: ShopImagePath + strconv.Itoa(int((*shops)[i].Id)) + "?" + time.Now().String(),
+			Lat:      (*shops)[i].Lat,
+			Long:     (*shops)[i].Long,
 		}
 		results = append(results, shopItem)
 	}

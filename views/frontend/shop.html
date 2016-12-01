@@ -56,6 +56,11 @@
             {{end}}
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="map" style="width:100%;height:400px"></div>
+        </div>
+    </div>
 {{ end }}
 
 {{ define "bottom_js" }}
@@ -76,4 +81,28 @@
             });
         });
     </script>
+    {{ if gt .shop.Id 0 }}
+    <script>
+        function showMap() {
+            var latlng = new google.maps.LatLng({{ .shop.Lat }}, {{ .shop.Long }});
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: latlng, 
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+            var infowindow = new google.maps.InfoWindow({});
+            infowindow.setContent(
+                '<div style="text-align:center"> <h3>{{.shop.Name}}</h3> <img style="width:180px; height:100px" class="img-responsive" src="{{.shop.ImageURL}}" alt="{.$shop.Image}}"> </div>');
+            infowindow.open(map, marker);
+        }
+    </script>
+    {{ end }}
+    <script src='https://maps.googleapis.com/maps/api/js?key={{ config "String" "gmaps_api_key" "AIzaSyAikVga80Tt2_4JH8wmyrrnCZkF0jUzzqc" }}&&callback=showMap' async defer></script>
 {{ end }}

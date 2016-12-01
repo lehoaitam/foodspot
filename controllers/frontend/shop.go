@@ -12,22 +12,22 @@ type ShopController struct {
 }
 
 type MenuDetailsAjaxItem struct {
-	Id int
-	MenuId int
-	FoodName string
+	Id              int
+	MenuId          int
+	FoodName        string
 	FoodDescription string
-	FoodImageURL string
-	Left int
-	Top int
-	Width int
-	Height int
+	FoodImageURL    string
+	Left            int
+	Top             int
+	Width           int
+	Height          int
 }
 
 type MenusAjaxItem struct {
-	Id       int
-	Name     string
-	Image    string
-	ImageURL string
+	Id          int
+	Name        string
+	Image       string
+	ImageURL    string
 	MenuDetails []MenuDetailsAjaxItem
 }
 
@@ -49,6 +49,8 @@ func getShop(id int64) ShopAjaxItem {
 		Name:     shop.Name,
 		Image:    shop.Image,
 		ImageURL: ShopImagePath + strconv.Itoa(shop.Id) + "?" + time.Now().String(),
+		Lat:      shop.Lat,
+		Long:     shop.Long,
 	}
 	return shopItem
 }
@@ -72,15 +74,15 @@ func getMenus(shop_id int64) []MenusAjaxItem {
 		menuItem.MenuDetails = []MenuDetailsAjaxItem{}
 		for j := 0; j < int(menuDetailsRows); j++ {
 			menuItem.MenuDetails = append(menuItem.MenuDetails, MenuDetailsAjaxItem{
-				Id:       int((*menuDetails)[j].Id),
-				MenuId:   (*menuDetails)[j].Menus.Id,
-				FoodName: (*menuDetails)[j].Food.Name,
-				FoodDescription:    (*menuDetails)[j].Food.Description,
-				FoodImageURL: 	"",
-				Left:     (*menuDetails)[j].Left,
-				Top:      (*menuDetails)[j].Top,
-				Width:    (*menuDetails)[j].Width,
-				Height:   (*menuDetails)[j].Height,
+				Id:              int((*menuDetails)[j].Id),
+				MenuId:          (*menuDetails)[j].Menus.Id,
+				FoodName:        (*menuDetails)[j].Food.Name,
+				FoodDescription: (*menuDetails)[j].Food.Description,
+				FoodImageURL:    "",
+				Left:            (*menuDetails)[j].Left,
+				Top:             (*menuDetails)[j].Top,
+				Width:           (*menuDetails)[j].Width,
+				Height:          (*menuDetails)[j].Height,
 			})
 		}
 
