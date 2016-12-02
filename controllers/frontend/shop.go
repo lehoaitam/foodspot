@@ -17,6 +17,7 @@ type MenuDetailsAjaxItem struct {
 	FoodName        string
 	FoodDescription string
 	FoodImageURL    string
+	FoodPrice    	int
 	Left            int
 	Top             int
 	Width           int
@@ -79,6 +80,7 @@ func getMenus(shop_id int64) []MenusAjaxItem {
 				FoodName:        (*menuDetails)[j].Food.Name,
 				FoodDescription: (*menuDetails)[j].Food.Description,
 				FoodImageURL:    "",
+				FoodPrice:	 int((*menuDetails)[j].Food.Price),
 				Left:            (*menuDetails)[j].Left,
 				Top:             (*menuDetails)[j].Top,
 				Width:           (*menuDetails)[j].Width,

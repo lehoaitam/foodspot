@@ -37,6 +37,24 @@
         </div>
     </div>
 
+    <div class="modal fade" id="foodModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Order</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="description"></p>
+                    <p>{{i18n .Lang "shop.price"}}:&nbsp;<span id="price"></span>$</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{i18n .Lang "general.close"}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div id="menus">
             {{range $index, $menu := .menus}}
@@ -47,18 +65,13 @@
                 <div class="menu-image" style="position:relative;">
                     <img src="{{$menu.ImageURL}}">
                     {{range $index, $menuDetail := $menu.MenuDetails}}
-                    <div class="select-area" food-name="{{$menuDetail.FoodName}}" style="top:{{$menuDetail.Top}}px;left:{{$menuDetail.Left}}px;width:{{$menuDetail.Width}}px;height:{{$menuDetail.Height}}px">
+                    <div class="select-area" food-name="{{$menuDetail.FoodName}}" food-price="{{$menuDetail.FoodPrice}}" style="top:{{$menuDetail.Top}}px;left:{{$menuDetail.Left}}px;width:{{$menuDetail.Width}}px;height:{{$menuDetail.Height}}px">
                         <div class="description">{{$menuDetail.FoodDescription}}</div>
                     </div>
                     {{end}}
                 </div>
             </div>
             {{end}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="map" style="width:100%;height:400px"></div>
         </div>
     </div>
 {{ end }}
@@ -77,32 +90,12 @@
             });
 
             $('.select-area').click(function() {
-                console.log($(this).attr('food-name'));
+                $('#foodModal .modal-title').html($(this).attr('food-name'));
+                $('#foodModal #description').html($(this).find('.description').html());
+                $('#foodModal #price').html($(this).attr('food-price'));
+
+                $('#foodModal').modal('show');
             });
         });
     </script>
-    {{ if gt .shop.Id 0 }}
-    <script>
-        function showMap() {
-            var latlng = new google.maps.LatLng({{ .shop.Lat }}, {{ .shop.Long }});
-            var mapCanvas = document.getElementById("map");
-            var mapOptions = {
-                center: latlng, 
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            
-            var marker = new google.maps.Marker({
-                position: latlng,
-                map: map
-            });
-            var infowindow = new google.maps.InfoWindow({});
-            infowindow.setContent(
-                '<div style="text-align:center"> <h3>{{.shop.Name}}</h3> <img style="width:180px; height:100px" class="img-responsive" src="{{.shop.ImageURL}}" alt="{.$shop.Image}}"> </div>');
-            infowindow.open(map, marker);
-        }
-    </script>
-    {{ end }}
-    <script src='https://maps.googleapis.com/maps/api/js?key={{ config "String" "gmaps_api_key" "AIzaSyAikVga80Tt2_4JH8wmyrrnCZkF0jUzzqc" }}&&callback=showMap' async defer></script>
 {{ end }}
