@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var shop_1 = require('./shop');
 var shops_service_1 = require('./shops.service');
+//enableProdMode();
 var ShopsComponent = (function () {
     function ShopsComponent(shopsService, renderer) {
         this.shopsService = shopsService;
@@ -32,14 +33,30 @@ var ShopsComponent = (function () {
     };
     ShopsComponent.prototype.showAddShop = function () {
         this.newShop = new shop_1.Shop();
+        this.marker = {
+            lat: this.newShop.Lat,
+            lng: this.newShop.Long
+        };
         this.displayAddForm();
     };
     ShopsComponent.prototype.showUpdateShop = function (shop) {
         this.editShop = shop;
+        this.marker = {
+            lat: this.editShop.Lat,
+            lng: this.editShop.Long
+        };
         this.displayUpdateForm();
+    };
+    ShopsComponent.prototype.mapClicked = function ($event) {
+        this.marker = {
+            lat: $event.coords.lat,
+            lng: $event.coords.lng
+        };
     };
     ShopsComponent.prototype.addShop = function () {
         var _this = this;
+        this.newShop.Lat = this.marker.lat;
+        this.newShop.Long = this.marker.lng;
         var fileInput = this.imageAddInput.nativeElement;
         if (fileInput.files && fileInput.files[0]) {
             this.shopsService.addShop(this.newShop, fileInput.files[0])
@@ -51,6 +68,8 @@ var ShopsComponent = (function () {
     };
     ShopsComponent.prototype.updateShop = function () {
         var _this = this;
+        this.editShop.Lat = this.marker.lat;
+        this.editShop.Long = this.marker.lng;
         var fileInput = this.imageUpdateInput.nativeElement;
         this.shopsService.updateShop(this.editShop, fileInput.files[0])
             .subscribe(function (data) { return _this.updateShopDone(data); }, function (error) { return _this.errorMessage = error; });

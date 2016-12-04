@@ -12,13 +12,16 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var core_2 = require('angular2-google-maps/core');
 var shops_component_1 = require('./shops.component');
 var ShopsModule = (function () {
     function ShopsModule() {
     }
     ShopsModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, core_2.AgmCoreModule.forRoot({
+                    apiKey: 'AIzaSyAikVga80Tt2_4JH8wmyrrnCZkF0jUzzqc'
+                })],
             declarations: [shops_component_1.ShopsComponent],
             bootstrap: [shops_component_1.ShopsComponent]
         }), 
