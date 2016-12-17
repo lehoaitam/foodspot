@@ -63,7 +63,7 @@
                     <h3>{{$menu.Name}}</h3>
                 </div>                
                 <div class="menu-image" style="position:relative;">
-                    <img src="{{$menu.ImageURL}}">
+                    <img src="{{$menu.ImageURL}}" style="width: 100%">
                     {{range $index, $menuDetail := $menu.MenuDetails}}
                     <div class="select-area" food-name="{{$menuDetail.FoodName}}" food-price="{{$menuDetail.FoodPrice}}" style="top:{{$menuDetail.Top}}px;left:{{$menuDetail.Left}}px;width:{{$menuDetail.Width}}px;height:{{$menuDetail.Height}}px">
                         <div class="description">{{$menuDetail.FoodDescription}}</div>
