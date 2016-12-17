@@ -3,8 +3,8 @@ export class Shop {
     Name:       string = '';
     Image: 		string = '';
     ImageURL: 	string = '';
-    Lat:        number = 0;
-    Long:       number = 0;
+    Lat:        number = 10.0309641; // Lat, Long của CTU
+    Long:       number = 105.7667154;
 	ActiveFlg:	boolean = true;
     Selected:   boolean = false;
 

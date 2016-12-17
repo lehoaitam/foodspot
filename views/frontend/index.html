@@ -63,7 +63,7 @@
             google.maps.event.addListener(marker, 'click', (function(marker) {
                 return function() {
                     infowindow.setContent(
-                        '<div style="text-align:center"> <h3>{{$shop.Name}}</h3> <img style="width:180px; height:100px" class="img-responsive" src="{{$shop.ImageURL}}" alt="{{$shop.Image}}"> <div style="margin-top:10px"> <a href="shop/{{$shop.Id}}" class="btn btn-primary">{{i18n $.Lang "top.shop_now"}}</a> </div> </div>');
+                        '<div style="text-align:center"> <a href="shop/{{$shop.Id}}"><h3>{{$shop.Name}}</h3></a> <img style="width:180px; height:100px" class="img-responsive" src="{{$shop.ImageURL}}" alt="{{$shop.Image}}"> </div>');
                     infowindow.open(map, marker);
                 }
             })(marker));
