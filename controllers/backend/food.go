@@ -41,7 +41,7 @@ func (c *FoodController) Get() {
 
 func (c *FoodController) GetFoods() {
 	foods := new([]*models.Food)
-	num, _ := models.GetFoods().Filter("DeleteFlg", 0).RelatedSel().OrderBy("Name").All(foods)
+	num, _ := models.GetFoods().Filter("DeleteFlg", 0).Filter("Categories__Shops__Users__id", c.UserInfo.Id).RelatedSel().OrderBy("Name").All(foods)
 
 	responseJson := []FoodAjaxItem{}
 
