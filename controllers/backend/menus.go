@@ -86,13 +86,14 @@ func (c *MenusController) AddMenus() {
 
 		pwd, _ := os.Getwd()
 		err = c.SaveToFile("Image", pwd + "/static/uploads/menus/" + strconv.FormatInt(id, 10))
+
 		if (err != nil) {
 			c.Data["json"] = err.Error()
 			c.ServeJSON()
 			return
 		}
 
-		c.Data["json"] = pwd
+		c.Data["json"] = "OK"
 		c.ServeJSON()
 	} else {
 		c.Data["json"] = "Error"

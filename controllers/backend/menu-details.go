@@ -48,7 +48,7 @@ func (c *MenuDetailsController) GetMenuDetails() {
 	menuDetails := new([]*models.MenuDetails)
 	num, _ := models.GetMenuDetails().Filter("DeleteFlg", 0).Filter("Menus__id", id).Filter("Menus__Shops__Users__id", c.UserInfo.Id).RelatedSel().All(menuDetails)
 
-	var responseJson []MenuDetailsAjaxItem
+	responseJson := []MenuDetailsAjaxItem{}
 
 	for i := 0; i < int(num); i++ {
 		menuDetailItem := MenuDetailsAjaxItem {

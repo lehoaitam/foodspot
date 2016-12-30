@@ -40,7 +40,7 @@ export class MenuDetailsService {
 
     private extractMenuDetailsData(res: Response) {
         let body = res.json();
-        let result = <MenuDetail[]>body || { };
+        let result = <MenuDetail[]>body || [];
         return result;
     }
 
