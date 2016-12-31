@@ -39,7 +39,6 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterView
 
     ngOnInit() {
         this.menuId = +this.route.snapshot.params['id'];
-        this.getMenuDetails(this.menuId);
         this.getFoods();
     }
 
@@ -55,6 +54,8 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterView
             this.renderer.setElementStyle(this.menuBGContainer.nativeElement, 'width', width + "px");
             this.renderer.setElementStyle(this.menuBGContainer.nativeElement, 'height', height + "px");
             this.renderer.setElementStyle(this.menuBGContainer.nativeElement, 'overflow', "hidden");
+
+            this.getMenuDetails(this.menuId);
         });
     }
 
@@ -65,7 +66,7 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterView
     getMenuDetails(id) {
         this.menuDetailsService.getMenuDetails(id)
             .subscribe(
-                menuDetails => this.menuDetails = menuDetails,
+                menuDetails => this.convertMenuDetailsLocation(menuDetails),
                 error =>  this.errorMessage = <any>error);
     }
 
@@ -77,18 +78,35 @@ export class MenuDetailsContentComponent implements OnInit, OnDestroy, AfterView
     }
 
     updateMenuDetails() {
-        this.menuDetailsService.updateMenuDetails(this.menuDetails, this.menuId)
+        this.menuDetailsService.updateMenuDetails(this.menuDetails, this.menuId,
+            this.menuBGContainer.nativeElement.offsetWidth, this.menuBGContainer.nativeElement.offsetHeight)
             .subscribe(
                 data => this.updateMenuDetailsDone(data),
                 error =>  this.errorMessage = <any>error);
     }
 
     private updateMenuDetailsDone(data) {
+        this.convertMenuDetailsLocation(this.menuDetails);
+
         if (data == "OK") {
             this.successMessage = "Menu detail updated successful.";
         } else {
             this.errorMessage = "There is an error when update menu detail. Please check your data again."
         }
+    }
+
+    private convertMenuDetailsLocation(data : MenuDetail[]) {
+        console.log("convertMenuDetailsLocation: " + data.length);
+        for (var i = 0; i < data.length; i++) {
+            console.log("offsetWidth: " + this.menuBGContainer.nativeElement.offsetWidth);
+
+            data[i].Left = (data[i].Left * this.menuBGContainer.nativeElement.offsetWidth) / 100.0;
+            data[i].Top = (data[i].Top * this.menuBGContainer.nativeElement.offsetHeight) / 100.0;
+            data[i].Width = (data[i].Width * this.menuBGContainer.nativeElement.offsetWidth) / 100.0;
+            data[i].Height = (data[i].Height * this.menuBGContainer.nativeElement.offsetHeight) / 100.0;
+
+        }
+        this.menuDetails = data;
     }
 
     selectFoodRow(index) {

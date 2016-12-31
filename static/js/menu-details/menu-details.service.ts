@@ -14,7 +14,15 @@ export class MenuDetailsService {
 
     }
 
-    updateMenuDetails(menus: MenuDetail[], id): Observable<string> {
+    updateMenuDetails(menus: MenuDetail[], id, canvasWidth: number, canvasHeight: number): Observable<string> {
+        //convert to percent location
+        for (var i = 0; i < menus.length; i++) {
+            menus[i].Left = (menus[i].Left / canvasWidth) * 100.0;
+            menus[i].Top = (menus[i].Top / canvasHeight) * 100.0;
+            menus[i].Width = (menus[i].Width / canvasWidth) * 100.0;
+            menus[i].Height = (menus[i].Height / canvasHeight) * 100.0;
+        }
+
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         let body = JSON.stringify(menus);

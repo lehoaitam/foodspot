@@ -18,10 +18,10 @@ type MenuDetailsAjaxItem struct {
 	FoodDescription string
 	FoodImageURL    string
 	FoodPrice    	int
-	Left            int
-	Top             int
-	Width           int
-	Height          int
+	Left            float64
+	Top             float64
+	Width           float64
+	Height          float64
 }
 
 type MenusAjaxItem struct {

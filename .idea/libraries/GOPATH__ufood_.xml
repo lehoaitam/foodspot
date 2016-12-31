@@ -2,12 +2,11 @@
   <library name="GOPATH &lt;ufood&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../.." />
-      <root url="file://$PROJECT_DIR$/../../../github.com" />
+      <root url="file://$PROJECT_DIR$/../../pkg/windows_amd64/github.com" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../.." />
-      <root url="file://$PROJECT_DIR$/../../../github.com" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />

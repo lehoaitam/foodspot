@@ -18,7 +18,14 @@ var MenuDetailsService = (function () {
         this.menuDetailsUrl = '/backoffice/menu-details/data/';
         this.menuDetailsDeleteUrl = '/backoffice/menu-details/delete';
     }
-    MenuDetailsService.prototype.updateMenuDetails = function (menus, id) {
+    MenuDetailsService.prototype.updateMenuDetails = function (menus, id, canvasWidth, canvasHeight) {
+        //convert to percent location
+        for (var i = 0; i < menus.length; i++) {
+            menus[i].Left = (menus[i].Left / canvasWidth) * 100.0;
+            menus[i].Top = (menus[i].Top / canvasHeight) * 100.0;
+            menus[i].Width = (menus[i].Width / canvasWidth) * 100.0;
+            menus[i].Height = (menus[i].Height / canvasHeight) * 100.0;
+        }
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         var body = JSON.stringify(menus);
@@ -41,7 +48,7 @@ var MenuDetailsService = (function () {
     };
     MenuDetailsService.prototype.extractMenuDetailsData = function (res) {
         var body = res.json();
-        var result = body || {};
+        var result = body || [];
         return result;
     };
     MenuDetailsService.prototype.updateMenuDetailsData = function (res) {

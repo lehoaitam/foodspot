@@ -3,7 +3,6 @@
   <component name="TypeScriptCompiler">
     <option name="isCompilerEnabled" value="true" />
     <option name="typeScriptCompilerParams" value="--experimentalDecorators -m commonjs -t es5 --emitDecoratorMetadata" />
-    <option name="nodeInterpreterTextField" value="J:/Programs/nodejs/node" />
     <option name="generateSourceMap" value="false" />
     <option name="hasOutDirectory" value="true" />
     <option name="mainFilePath" value="F:\Working\projects\go_projects\src\foodspot\static\js\main.ts" />

@@ -17,10 +17,10 @@ type MenuDetailsAjaxItem struct {
 	MenuId int
 	FoodId int
 	Name string
-	Left int
-	Top int
-	Width int
-	Height int
+	Left float64
+	Top float64
+	Width float64
+	Height float64
 }
 
 func (c *MenuDetailsController) NestPrepare() {

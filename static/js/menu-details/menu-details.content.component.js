@@ -32,7 +32,6 @@ var MenuDetailsContentComponent = (function () {
     }
     MenuDetailsContentComponent.prototype.ngOnInit = function () {
         this.menuId = +this.route.snapshot.params['id'];
-        this.getMenuDetails(this.menuId);
         this.getFoods();
     };
     MenuDetailsContentComponent.prototype.ngAfterViewInit = function () {
@@ -47,6 +46,7 @@ var MenuDetailsContentComponent = (function () {
             _this.renderer.setElementStyle(_this.menuBGContainer.nativeElement, 'width', width + "px");
             _this.renderer.setElementStyle(_this.menuBGContainer.nativeElement, 'height', height + "px");
             _this.renderer.setElementStyle(_this.menuBGContainer.nativeElement, 'overflow', "hidden");
+            _this.getMenuDetails(_this.menuId);
         });
     };
     MenuDetailsContentComponent.prototype.ngOnDestroy = function () {
@@ -54,7 +54,7 @@ var MenuDetailsContentComponent = (function () {
     MenuDetailsContentComponent.prototype.getMenuDetails = function (id) {
         var _this = this;
         this.menuDetailsService.getMenuDetails(id)
-            .subscribe(function (menuDetails) { return _this.menuDetails = menuDetails; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (menuDetails) { return _this.convertMenuDetailsLocation(menuDetails); }, function (error) { return _this.errorMessage = error; });
     };
     MenuDetailsContentComponent.prototype.getFoods = function () {
         var _this = this;
@@ -63,16 +63,28 @@ var MenuDetailsContentComponent = (function () {
     };
     MenuDetailsContentComponent.prototype.updateMenuDetails = function () {
         var _this = this;
-        this.menuDetailsService.updateMenuDetails(this.menuDetails, this.menuId)
+        this.menuDetailsService.updateMenuDetails(this.menuDetails, this.menuId, this.menuBGContainer.nativeElement.offsetWidth, this.menuBGContainer.nativeElement.offsetHeight)
             .subscribe(function (data) { return _this.updateMenuDetailsDone(data); }, function (error) { return _this.errorMessage = error; });
     };
     MenuDetailsContentComponent.prototype.updateMenuDetailsDone = function (data) {
+        this.convertMenuDetailsLocation(this.menuDetails);
         if (data == "OK") {
             this.successMessage = "Menu detail updated successful.";
         }
         else {
             this.errorMessage = "There is an error when update menu detail. Please check your data again.";
         }
+    };
+    MenuDetailsContentComponent.prototype.convertMenuDetailsLocation = function (data) {
+        console.log("convertMenuDetailsLocation: " + data.length);
+        for (var i = 0; i < data.length; i++) {
+            console.log("offsetWidth: " + this.menuBGContainer.nativeElement.offsetWidth);
+            data[i].Left = (data[i].Left * this.menuBGContainer.nativeElement.offsetWidth) / 100.0;
+            data[i].Top = (data[i].Top * this.menuBGContainer.nativeElement.offsetHeight) / 100.0;
+            data[i].Width = (data[i].Width * this.menuBGContainer.nativeElement.offsetWidth) / 100.0;
+            data[i].Height = (data[i].Height * this.menuBGContainer.nativeElement.offsetHeight) / 100.0;
+        }
+        this.menuDetails = data;
     };
     MenuDetailsContentComponent.prototype.selectFoodRow = function (index) {
         if (this.selectedFoodRowIndex == index) {

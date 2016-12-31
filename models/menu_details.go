@@ -12,10 +12,10 @@ type MenuDetails struct {
 	Id            int
 	Menus         *Menus    `orm:"rel(fk)"`
 	Food          *Food     `orm:"rel(fk)"`
-	Left	      int       `orm:"size(9)" form:"Left" valid:"Required"`
-	Top	      int       `orm:"size(9)" form:"Top" valid:"Required"`
-	Width 	      int       `orm:"size(9)" form:"Width" valid:"Required"`
-	Height	      int       `orm:"size(9)" form:"Height" valid:"Required"`
+	Left	      float64   `orm:"" form:"Left" valid:"Required"`
+	Top	      float64   `orm:"" form:"Top" valid:"Required"`
+	Width 	      float64   `orm:"" form:"Width" valid:"Required"`
+	Height	      float64   `orm:"" form:"Height" valid:"Required"`
 	DeleteFlg     byte	`orm:"default(0)"`
 	Created       time.Time `orm:"auto_now_add;type(datetime)"`
 	Updated       time.Time `orm:"auto_now;type(datetime)"`

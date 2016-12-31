@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="GOPATH &lt;foodspot&gt;">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../goorder" />
       <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../goorder" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/../goorder" />
       <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../goorder" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />
