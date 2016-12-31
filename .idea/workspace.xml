@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4ca2e1c-7f39-4746-b686-d9e276559b4d" name="Default" comment="front end: add food select areas - add popup">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__goorder_.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/foodspot.iml" afterPath="$PROJECT_DIR$/.idea/foodspot.iml" />
+    <list default="true" id="b4ca2e1c-7f39-4746-b686-d9e276559b4d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__foodspot_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/GOPATH__foodspot_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__ufood_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/GOPATH__ufood_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/backend/menu-details.go" afterPath="$PROJECT_DIR$/controllers/backend/menu-details.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/backend/menus.go" afterPath="$PROJECT_DIR$/controllers/backend/menus.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/frontend/shop.go" afterPath="$PROJECT_DIR$/controllers/frontend/shop.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/menu_details.go" afterPath="$PROJECT_DIR$/models/menu_details.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.js" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/menu-details/menu-details.service.js" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/menu-details/menu-details.service.ts" afterPath="$PROJECT_DIR$/static/js/menu-details/menu-details.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/frontend/shop.html" afterPath="$PROJECT_DIR$/views/frontend/shop.html" />
     </list>
     <ignored path="ufood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menus.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="menus.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/backend/menus.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="39" column="41" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="41" />
+            <state relative-caret-position="462">
+              <caret line="37" column="127" selection-start-line="37" selection-start-column="127" selection-end-line="37" selection-end-column="127" />
               <folding>
                 <element signature="e#29#127#0" expanded="true" />
               </folding>
@@ -92,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shop.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shop.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/frontend/shop.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="489">
+              <caret line="59" column="43" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
@@ -128,8 +116,8 @@
       <file leaf-file-name="shop.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/frontend/shop.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="332">
+              <caret line="60" column="101" selection-start-line="60" selection-start-column="87" selection-end-line="60" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -209,14 +197,14 @@
         <option value="$PROJECT_DIR$/conf/locale_en-US.ini" />
         <option value="$PROJECT_DIR$/static/templates/backend/menu-details/index.html" />
         <option value="$PROJECT_DIR$/controllers/backend/food.go" />
-        <option value="$PROJECT_DIR$/controllers/backend/menus.go" />
         <option value="$PROJECT_DIR$/models/menu_details.go" />
-        <option value="$PROJECT_DIR$/controllers/frontend/shop.go" />
         <option value="$PROJECT_DIR$/controllers/backend/menu-details.go" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-detail.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.service.ts" />
         <option value="$PROJECT_DIR$/static/js/menu-details/menu-details.content.component.ts" />
         <option value="$PROJECT_DIR$/views/frontend/shop.html" />
+        <option value="$PROJECT_DIR$/controllers/frontend/shop.go" />
+        <option value="$PROJECT_DIR$/controllers/backend/menus.go" />
       </list>
     </option>
   </component>
@@ -1219,7 +1207,7 @@
       <workItem from="1483116377276" duration="934000" />
       <workItem from="1483117333015" duration="2771000" />
       <workItem from="1483120229194" duration="194000" />
-      <workItem from="1483148500537" duration="3283000" />
+      <workItem from="1483148500537" duration="4141000" />
     </task>
     <task id="LOCAL-00001" summary="set up go's ufood project">
       <created>1470511528371</created>
@@ -1487,11 +1475,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483119750364</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fix bugs">
+      <created>1483161690653</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1483161690653</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243357000" />
+    <option name="totallyTimeSpent" value="244215000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1513,10 +1508,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69974226" sideWeight="0.51180553" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2954014" sideWeight="0.49444443" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24006236" sideWeight="0.5229167" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24006236" sideWeight="0.5229167" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32845187" sideWeight="0.47916666" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21979734" sideWeight="0.47777778" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21979734" sideWeight="0.47777778" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17109375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1867,24 +1862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/backend/menus.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="39" column="41" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="41" />
-          <folding>
-            <element signature="e#29#127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/frontend/shop.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/menu_details.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -1955,11 +1932,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/frontend/shop.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="489">
+          <caret line="59" column="43" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="43" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/frontend/shop.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="60" column="101" selection-start-line="60" selection-start-column="87" selection-end-line="60" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/backend/menus.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="37" column="127" selection-start-line="37" selection-start-column="127" selection-end-line="37" selection-end-column="127" />
+          <folding>
+            <element signature="e#29#127#0" expanded="true" />
           </folding>
         </state>
       </provider>

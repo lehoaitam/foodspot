@@ -35,7 +35,7 @@ func (c *MenusController) Get() {
 
 func (c *MenusController) GetMenus() {
 	menus := new([]*models.Menus)
-	num, _ := models.GetMenus().Filter("ActiveFlg", 1).Filter("Shops__Users__id", c.UserInfo.Id).RelatedSel().All(menus)
+	num, _ := models.GetMenus().Filter("ActiveFlg", 1).Filter("Shops__Users__id", c.UserInfo.Id).RelatedSel().OrderBy("id").All(menus)
 
 	responseJson := []MenusAjaxItem{}
 

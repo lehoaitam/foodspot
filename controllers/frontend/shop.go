@@ -58,7 +58,7 @@ func getShop(id int64) ShopAjaxItem {
 
 func getMenus(shop_id int64) []MenusAjaxItem {
 	menus := new([]*models.Menus)
-	num, _ := models.GetMenus().Filter("ActiveFlg", 1).Filter("Shops__id", shop_id).All(menus)
+	num, _ := models.GetMenus().Filter("ActiveFlg", 1).Filter("Shops__id", shop_id).OrderBy("id").All(menus)
 
 	result := []MenusAjaxItem{}
 
