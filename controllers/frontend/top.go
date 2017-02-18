@@ -5,9 +5,7 @@ import (
 	"foodspot/models"
 	"strconv"
 	"time"
-
 	"fmt"
-
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 )
@@ -50,4 +48,56 @@ func getShops() []ShopAjaxItem {
 		results = append(results, shopItem)
 	}
 	return results
+}
+
+func (c *TopController) MenuDetail() {
+	if !c.Ctx.Input.IsPost() {
+		c.Data["json"] = "Error"
+		c.ServeJSON()
+		return
+	}
+
+	id, _ := c.GetInt("Id");
+
+	if id > 0 {
+		menus := new([]*models.Menus)
+		num, _ := models.GetMenus().Filter("ActiveFlg", 1).Filter("Shops__id", id).OrderBy("id").All(menus)
+
+		result := []MenusAjaxItem{}
+
+		for i := 0; i < int(num); i++ {
+			menuItem := MenusAjaxItem{
+				Id:       int((*menus)[i].Id),
+				Name:     (*menus)[i].Name,
+				Image:    (*menus)[i].Image,
+				ImageURL: "/static/uploads/menus/" + strconv.Itoa(int((*menus)[i].Id)) + "?" + time.Now().String(),
+			}
+
+			menuDetails := new([]*models.MenuDetails)
+			menuDetailsRows, _ := models.GetMenuDetails().Filter("DeleteFlg", 0).Filter("Menus__id", menuItem.Id).RelatedSel().All(menuDetails)
+			menuItem.MenuDetails = []MenuDetailsAjaxItem{}
+			for j := 0; j < int(menuDetailsRows); j++ {
+				menuItem.MenuDetails = append(menuItem.MenuDetails, MenuDetailsAjaxItem{
+					Id:              int((*menuDetails)[j].Id),
+					MenuId:          (*menuDetails)[j].Menus.Id,
+					FoodName:        (*menuDetails)[j].Food.Name,
+					FoodDescription: (*menuDetails)[j].Food.Description,
+					FoodImageURL:    "",
+					FoodPrice:	 int((*menuDetails)[j].Food.Price),
+					Left:            (*menuDetails)[j].Left,
+					Top:             (*menuDetails)[j].Top,
+					Width:           (*menuDetails)[j].Width,
+					Height:          (*menuDetails)[j].Height,
+				})
+			}
+
+			result = append(result, menuItem)
+		}
+
+		c.Data["json"] = result
+		c.ServeJSON()
+	} else {
+		c.Data["json"] = "Error"
+		c.ServeJSON()
+	}
 }

@@ -1,74 +1,415 @@
 {{ template "baseFrontEndView.html" . }}
 
+{{ define "css" }}
+<!-- Booklet plugin -->
+<link href="/static/booklet/jquery.booklet.latest.css" type="text/css" rel="stylesheet" media="screen, projection, tv" />
+
+<style>
+    .menu-content {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+    .menu-content .menu-image {
+        height: 480px;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+
+    .select-area {
+        position:absolute;
+    }
+
+    .select-area .description {
+        display: none;
+    }
+</style>
+{{ end }}
+
+{{ define "top_js" }}
+<script src="/static/booklet/jquery-ui-1.10.4.min.js"></script>
+{{ end }}
+
 {{ define "content" }}
-    <!-- Shops -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">{{i18n .Lang "top.shops"}}</h2>
+
+<div class="modal fade" id="foodModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Order</h4>
+            </div>
+            <div class="modal-body">
+                <p id="description"></p>
+                <p>{{i18n .Lang "shop.price"}}:&nbsp;<span id="price"></span>$</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{i18n .Lang "general.close"}}</button>
+            </div>
         </div>
     </div>
+</div>
 
-    {{ $lastIndex := add (len .shops) -1 }}
-    {{ range $index, $shop := .shops }}
-        {{ $modulus := mod $index 3 }}
-        {{ if eq $modulus 0 }}
-        <div class="row">
-        {{ end }}
-            <div class="col-md-4 text-center">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="{{$shop.ImageURL}}" alt="{{$shop.Image}}">
-                    <div class="caption">
-                        <h3>{{$shop.Name}}</h3>
-                        <a href="shop/{{$shop.Id}}" class="btn btn-primary">{{i18n $.Lang "top.shop_now"}}</a>
+<!--about-->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center marb-35">
+                    <h1 class="header-h">Foodspot Journey</h1>
+                    <p class="header-p">Foodspot is a social network based service. The service offer matching between gourmets need and restaurants menu. So, by smartphone (iOS, android) app, gourmets can order their favorite food/drink at home/office.
+                    </p>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="about-info">
+                            <h2 class="heading">Classification</h2>
+                            <div class="details-list">
+                                <ul>
+                                    <li><i class="fa fa-check"></i>Foodspot classifiy food very detailed: the purpose, type, cuisine, price</li>
+                                    <li><i class="fa fa-check"></i>This classification helps community filter its own purpose very quickly.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <img src="/static/img/res01.jpg" alt="" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </section>
+    <!--/about-->
+    <!-- event -->
+    <section id="event">
+        <div class="bg-color" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center" style="padding:60px;">
+                      <h1 class="header-h">Search for food</h1>
+                      <p class="header-p"></p>
+                    </div>
+                    <div class="col-md-12" style="padding-bottom:60px;">
+                        <div class="item active left">
+                          <div class="col-md-6 col-sm-6 left-images">
+                           <img src="/static/img/res02.jpg" class="img-responsive">
+                         </div>
+                         <div class="col-md-6 col-sm-6 details-text">
+                          <div class="content-holder">
+                            <!--h2>Search for food</h2-->
+                            <p>Smart search engine by typing the place name, or address, or street name, or the name of the dish. Search system using hints & quick view of information, helping you find the quickest place.</p>
+                            <!--address>
+                              <strong>Place: </strong>
+                              1612 Collins Str, Victoria 8007
+                              <br>
+                              <strong>Time: </strong>
+                              07:30pm
+                            </address-->
+                            <!--a class="btn btn-imfo btn-read-more" href="events-details.html">Read more</a-->
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
-        {{ if or (eq $modulus 2) (eq $index $lastIndex) }}
         </div>
-        {{ end }}
-    {{ end }}
-    
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="map" style="width:100%;height:400px"></div>
+    </section>
+    <!--/ event -->
+    <!-- menu -->
+    <section id="menu-list" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center marb-35" style="border-bottom: 1px solid #FFB03B;">
+                    <h1 class="header-h">Shops List</h1>
+                    <!--p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                        <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p-->
+                </div>
+            </div>
+            {{ $lastIndex := add (len .shops) -1 }}
+            {{ range $index, $shop := .shops }}
+            {{ $modulus := mod $index 3 }}
+            {{ if eq $modulus 0 }}
+            <div class="row">
+                {{ end }}
+                <div class="col-md-4 text-center">
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="{{$shop.ImageURL}}" alt="{{$shop.Image}}">
+                        <div class="caption" style="padding: 10px 0px; background-color: rgba(0, 0, 0, 0.5);">
+                            <h3 class="heading" style="margin: 0;border-bottom: 1px solid;padding-bottom: 5px;">{{$shop.Name}}</h3>
+                            <a class="btn btn-imfo btn-read-more" onclick="showMenu({{$shop.Id}})" href="javascript:void(0)" class="btn btn-primary">{{i18n $.Lang "top.show_menu"}}</a>
+                        </div>
+                    </div>
+                </div>
+                {{ if or (eq $modulus 2) (eq $index $lastIndex) }}
+            </div>
+            {{ end }}
+            {{ end }}
+
+            <div id="menuHeader" class="row" style="display: none">
+                <div class="col-md-12 text-center marb-35" style="border-bottom: 1px solid #FFB03B;">
+                    <h1 class="header-h">Menu</h1>
+                    <!--p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                        <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p-->
+                </div>
+            </div>
+            <div class="row">
+                <div id="menus">
+
+                </div>
+            </div>
+
+            <!--div class="row">
+                <div class="col-md-12 text-center marb-35">
+                    <h1 class="header-h">Shops List</h1>
+                    <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                    <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
+                </div>
+                <div class="col-md-12  text-center gallery-trigger">
+                    <ul>
+                        <li><a class="filter" data-filter="all">Show All</a></li>
+                        <li><a class="filter" data-filter=".category-1">Breakfast</a></li>
+                        <li><a class="filter" data-filter=".category-2">Lunch</a></li>
+                        <li><a class="filter" data-filter=".category-3">Dinner</a></li>
+                    </ul>
+                </div>
+                <div id="Container">
+                    <div class="mix category-1 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-1 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-1 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-1 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-2 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-2 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-2 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-2 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-3 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-3 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-3 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                    <div class="mix category-3 menu-restaurant" data-myorder="2">
+                        <span class="clearfix">
+                        <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+                        <span style="left: 166px; right: 44px;" class="menu-line"></span>
+                        <span class="menu-price">$20.99</span>
+                      </span>
+                      <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
+                    </div>
+                </div>
+            </div-->
         </div>
-    </div>
+    </section>
+    <!--/ menu -->
+    <!-- contact -->
+    <!--section id="contact" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="header-h">Book Your table</h1>
+                    <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                    <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
+                </div>
+            </div>
+            <div class="row msg-row">
+                <div class="col-md-4 col-sm-4 mr-15">
+                    <div class="media-2">
+                        <div class="media-left">
+                            <div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-phone"></span></div>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="dark-blue regular">Phone Numbers</h4>
+                            <p class="light-blue regular alt-p">+440 875369208 - <span class="contacts-sp">Phone Booking</span></p>
+                        </div>
+                    </div>
+                    <div class="media-2">
+                        <div class="media-left">
+                            <div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span></div>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="dark-blue regular">Opening Hours</h4>
+                            <p class="light-blue regular alt-p"> Monday to Friday 09.00 - 24:00</p>
+                            <p class="light-blue regular alt-p">
+                                 Friday and Sunday 08:00 - 03.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <form action="" method="post" role="form" class="contactForm">
+                    <div id="sendmessage">Your booking request has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+                    <div class="col-md-6 col-sm-6 contact-form pad-form">
+                        <div class="form-group label-floating is-empty">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <div class="validation"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6 col-sm-6 contact-form">
+                        <div class="form-group">
+                            <input type="date" class="form-control label-floating is-empty" name="date" id="date" placeholder="Date" data-rule="required" data-msg="This field is required" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 contact-form pad-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control label-floating is-empty" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 contact-form">
+                        <div class="form-group">
+                            <input type="time" class="form-control label-floating is-empty" name="time" id="time" placeholder="Time" data-rule="required" data-msg="This field is required" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control label-floating is-empty" name="phone" id="phone" placeholder="Phone" data-rule="required" data-msg="This field is required" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control label-floating is-empty" name="people" id="people" placeholder="People" data-rule="required" data-msg="This field is required" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 contact-form">
+                        <div class="form-group label-floating is-empty">
+                            <textarea class="form-control" name="message" rows="5" rows="3" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            <div class="validation"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-12 btnpad">
+                        <div class="contacts-btn-pad">
+                            <button class="contacts-btn">Book Table</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section-->
+    <!-- / contact -->
 {{ end }}
 
 {{ define "bottom_js" }}
-    <script>
-        function showMap() {
-            var center;
-            {{ if eq (len .shops) 0}}
-                center = new google.maps.LatLng(10.0309641, 105.7667154); // Đại học Cần Thơ
-            {{ else }}
-                {{ $firstShop := index .shops 0 }}
-                center = new google.maps.LatLng({{ $firstShop.Lat }}, {{ $firstShop.Long }});
-            {{ end }}
-            var mapCanvas = document.getElementById("map");
-            var mapOptions = {
-                center: center, 
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-            
-            var marker;
-            var infowindow = new google.maps.InfoWindow({});
-        {{ range $index, $shop := .shops }}
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng({{ $shop.Lat }}, {{ $shop.Long }}),
-                map: map
-            });
-            google.maps.event.addListener(marker, 'click', (function(marker) {
-                return function() {
-                    infowindow.setContent(
-                        '<div style="text-align:center"> <a href="shop/{{$shop.Id}}"><h3>{{$shop.Name}}</h3></a> <img style="width:180px; height:100px" class="img-responsive" src="{{$shop.ImageURL}}" alt="{{$shop.Image}}"> </div>');
-                    infowindow.open(map, marker);
+<script src="/static/booklet/jquery.easing.1.3.js"></script>
+<script src="/static/booklet/jquery.booklet.latest.min.js"></script>
+<!-- Script to Activate the Carousel -->
+<script>
+    function showMenu(id) {
+        $.post( "/index/menu", { Id: id })
+            .done(function( data ) {
+                $('#menus').html('');
+                $('#menus').show();
+                $('#menuHeader').show();
+
+                if (data != 'Error') {
+                    var menuHTML = '';
+                    $.each(data, function (k, menu) {
+                        var menuDetailHTML = '';
+                        $.each(menu.MenuDetails, function (k1, menuDetail) {
+                            menuDetailHTML += '<div class="select-area" food-name="' + menuDetail.FoodName + '" food-price="' + menuDetail.FoodPrice + '" style="top:' + menuDetail.Top + '%;left:' + menuDetail.Left + '%;width:' + menuDetail.Width + '%;height:' + menuDetail.Height + '%">' +
+                                    '<div class="description">' + menuDetail.FoodDescription + '</div></div>';
+
+                        });
+                        menuHTML += '<div class="menu-content"><div class="menu-header"><h3></h3></div><div class="menu-image" style="position:relative;height: auto"><img src="' + menu.ImageURL + '" style="width: 100%">' + menuDetailHTML + '</div></div>';
+                    });
+                    $('#menus').html(menuHTML);
+
+                    $('#menus').booklet({
+                        width: '100%',
+                        height: 550,
+                        pagePadding: 0
+                    });
+
+                    $('.select-area').click(function() {
+                        $('#foodModal .modal-title').html($(this).attr('food-name'));
+                        $('#foodModal #description').html($(this).find('.description').html());
+                        $('#foodModal #price').html($(this).attr('food-price'));
+
+                        $('#foodModal').modal('show');
+                    });
                 }
-            })(marker));
-        {{ end }}
-        }
-    </script>
-    <script src='https://maps.googleapis.com/maps/api/js?key={{ config "String" "gmaps_api_key" "AIzaSyAikVga80Tt2_4JH8wmyrrnCZkF0jUzzqc" }}&&callback=showMap' async defer></script>
+        });
+    }
+</script>
 {{ end }}

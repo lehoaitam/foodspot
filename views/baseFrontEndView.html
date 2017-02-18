@@ -1,110 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>{{.page_title}} - {{i18n .Lang "app_name"}}</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="/static/css/modern-business.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-	<link href="/static/css/style.css" rel="stylesheet">
-	
-    <!-- Custom Fonts -->
-    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    {{ block "css" . }}{{ end }}
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <!-- jQuery -->
-    <script src="/static/js/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     
-    {{ block "top_js" . }}{{ end }}
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/index.html">FoodSpot</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    {{if compare .IsLogin true}}
-                    <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a></li>
-                            <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</a></li>
-                        </ul>
-                    </li>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	
+	 {{ block "css" . }}{{ end }}
+  </head>
+  <body>
+	
+	<script src="/static/js/jquery/jquery.min.js"></script>
+    <script src="/static/js/jquery/jquery.easing.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery/jquery.mixitup.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+	
+	{{ block "top_js" . }}{{ end }}
+	
+    <!--banner-->
+    <section id="banner">
+      <div class="bg-color">
+        <header id="header">
+            <div class="container">
+                <div id="mySidenav" class="sidenav">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					{{if compare .IsLogin true}}
+					<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Profile</a>
+					<a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</a>
                     {{else}}
-                    <li>
-                        <a href="/login">Login</a>
-                    </li>
-                    <li>
-                        <a href="/signup">Sign up</a>
-                    </li>
+					<a href="/login">Login</a>
+					<a href="/signup">Sign up</a>
                     {{end}}
-
-
-                </ul>
+                </div>
+                <!-- Use any element to open the sidenav -->
+                <span onclick="openNav()" class="pull-right menu-icon">☰</span>
             </div>
-            <!-- /.navbar-collapse -->
+        </header>
+        <div class="container">
+        <div class="row">
+          <div class="inner text-center">
+            <h1 class="logo-name">Foodspot</h1>
+            <h2>Food To fit your lifestyle & health.</h2>
+            <p>Specialized in Indian Cuisine!!</p>
+          </div>
         </div>
-        <!-- /.container -->
-    </nav>
-
-
-    <!-- Page Content -->
-    <div class="container">
-
-        {{ block "content" . }}{{ end }}
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
+        </div>
+      </div>
+    </section>
+    <!-- / banner -->
+	
+	{{ block "content" . }}{{ end }}
+	
+    
+    <!-- footer -->
+    <footer class="footer text-center">
+        <div class="footer-top">
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Foodspot 2016</p>
+                <div class="col-md-offset-3 col-md-6 text-center">
+                    <div class="widget">
+                        <h4 class="widget-title">Foodspot</h4>
+                        
+                        <div class="social-list">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                        <p class="copyright clear-float">
+                            © Foodspot 2017
+                            
+                        </p>
+                    </div>
                 </div>
             </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
+        </div>
+    </footer>
+    <!-- / footer -->
 
     {{ block "bottom_js" . }}{{ end }}
-</body>
 
+</body>
 </html>
